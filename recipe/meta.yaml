@@ -1,4 +1,4 @@
-{% set version = "7.5" %}
+{% set version = "7.6" %}
 
 package:
   name: neuron
@@ -7,7 +7,7 @@ package:
 source:
   fn: nrn-{{ version }}.tar.gz
   url: https://www.neuron.yale.edu/ftp/neuron/versions/v{{ version }}/nrn-{{ version }}.tar.gz
-  sha256: 67642216a969fdc844da1bd56643edeed5e9f9ab8c2a3049dcbcbcccba29c336
+  sha256: 85c03010b5674224a3260f666cc0f863dab3734ce0955bf23fdf1427a4d7f8dc
 
 build:
   number: 0
