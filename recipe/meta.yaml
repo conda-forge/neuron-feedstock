@@ -10,7 +10,7 @@ source:
   sha256: 85c03010b5674224a3260f666cc0f863dab3734ce0955bf23fdf1427a4d7f8dc
 
 build:
-  number: 0
+  number: 1000
   skip: true  # [win]
   run_exports:
     - pin_compatible("neuron", max_pin="x.x", min_pin="x.x")
