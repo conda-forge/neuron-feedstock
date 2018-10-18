@@ -8,7 +8,12 @@ export NCURSES_LIBS="-L${PREFIX}/lib -lncurses"
     --prefix=$PREFIX \
     --exec-prefix=$PREFIX
 
-make -j ${NUM_CPUS:-1} && make install
+make -j ${NUM_CPUS:-1}
+make install
+
+# make install copies a bunch of intermediate files that shouldn't be installed
+rm -f "${PREFIX}/lib/*.la"
+rm -f "${PREFIX}/lib/*.o"
 
 # redo Python binding installation
 # since package installs in lib/python instead of proper site-packages
