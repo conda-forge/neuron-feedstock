@@ -8,6 +8,9 @@ source:
   fn: nrn-{{ version }}.tar.gz
   url: https://www.neuron.yale.edu/ftp/neuron/versions/v{{ version }}/nrn-{{ version }}.tar.gz
   sha256: 85c03010b5674224a3260f666cc0f863dab3734ce0955bf23fdf1427a4d7f8dc
+  patches:
+    - nocarbon.patch  # [osx]
+    - libnrniv.patch
 
 build:
   number: 1000
@@ -19,6 +22,7 @@ requirements:
   build:
     - {{ compiler('c') }}
     - autoconf
+    - automake
     - bison
     - flex
     - pkg-config
