@@ -1,5 +1,6 @@
+
 export NCURSES_CFLAGS="-I${PREFIX}/include/ncurses"
-export NCURSES_LIBS="-L${PREFIX} -lncurses"
+export NCURSES_LIBS="-L${PREFIX}/lib -lncurses"
 
 ./configure \
     --without-x \
