@@ -2,7 +2,8 @@
 export NCURSES_CFLAGS="-I${PREFIX}/include/ncurses"
 export NCURSES_LIBS="-L${PREFIX}/lib -lncurses"
 
-aclocal
+aclocal -Im4
+automake
 ./configure \
     --without-x \
     --with-nrnpython=$PYTHON \
