@@ -6,6 +6,8 @@ aclocal -Im4
 automake
 ./configure \
     --without-x \
+    --without-mpi \
+    --without-paranrn \
     --with-nrnpython=$PYTHON \
     --prefix=$PREFIX \
     --exec-prefix=$PREFIX
