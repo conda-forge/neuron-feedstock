@@ -1,6 +1,6 @@
 
 export NCURSES_CFLAGS="-I${PREFIX}/include/ncurses"
-export NCURSES_LIBS="-L${PREFIX}/lib -lncurses"
+export NCURSES_LIBS="-L${PREFIX}/lib -lncurses -ltinfo"
 
 aclocal -Im4
 automake
