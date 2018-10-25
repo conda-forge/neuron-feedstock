@@ -11,6 +11,7 @@ source:
   patches:
     - nocarbon.patch  # [osx]
     - libnrniv.patch
+    - pkg-config-ncurses.patch
 
 build:
   number: 1000
