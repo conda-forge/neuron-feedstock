@@ -12,6 +12,7 @@ source:
     - nocarbon.patch  # [osx]
     - libnrniv.patch
     - pkg-config-ncurses.patch
+    - memacs.patch
 
 build:
   number: 1000
