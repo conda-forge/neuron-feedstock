@@ -13,6 +13,7 @@ source:
     - libnrniv.patch
     - pkg-config-ncurses.patch
     - memacs.patch
+    - stdio-h.patch
 
 build:
   number: 1000
