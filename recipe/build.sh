@@ -3,6 +3,15 @@
 export LDFLAGS="${LDFLAGS/-Wl,-dead_strip_dylibs}"
 export LDFLAGS="${LDFLAGS/-Wl,--as-needed}"
 
+# force shortnames of compilers since package contains references to these
+if [[ "$(uname)" == "Darwin" ]]; then
+  export CC=clang
+  export CXX=clang++
+else
+  export CC=gcc
+  export CXX=g++
+fi
+
 aclocal -Im4
 automake
 autoconf
