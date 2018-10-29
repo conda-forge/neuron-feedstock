@@ -43,6 +43,7 @@ requirements:
 
 test:
   requires:
+    - {{ compiler('c') }}
     - scipy
   files:
     - Nap_Et2.mod
