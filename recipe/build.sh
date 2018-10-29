@@ -1,3 +1,8 @@
+# cancel culling of unused libs
+# it seems to cull libs that are actually used
+export LDFLAGS="${LDFLAGS/-Wl,-dead_strip_dylibs}"
+export LDFLAGS="${LDFLAGS/-Wl,--as-needed}"
+
 aclocal -Im4
 automake
 autoconf
