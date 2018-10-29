@@ -21,6 +21,9 @@ rm -f "${PREFIX}/lib/*.o"
 
 # redo Python binding installation
 # since package installs in lib/python instead of proper site-packages
-rm -rf $PREFIX/lib/python
 cd src/nrnpython
 python setup.py install
+rm -rf $PREFIX/lib/python
+rm -rf $PREFIX/share/neuron/lib/python
+
+python -c 'import neuron.hoc'
