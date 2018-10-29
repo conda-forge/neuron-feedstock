@@ -34,10 +34,12 @@ requirements:
     - libtool
   host:
     - python
+    - numpy
     - readline
     - ncurses
   run:
     - python
+    - numpy
     - readline
     - ncurses
 
