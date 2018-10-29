@@ -1,0 +1,29 @@
+From 3d154340f4c1a84dad7e59149401dae41bb7de95 Mon Sep 17 00:00:00 2001
+From: Min RK <benjaminrk@gmail.com>
+Date: Mon, 29 Oct 2018 11:46:54 +0100
+Subject: [PATCH] Detect libedit on mac
+
+Unconditional link of `-lreadline`. This is provided whether using libedit or not.
+rather than assuming libedit instead of readline on mac.
+
+---
+ src/nrnpython/setup.py.in | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/src/nrnpython/setup.py.in b/src/nrnpython/setup.py.in
+index 55c7ce76..6d1ed265 100644
+--- a/src/nrnpython/setup.py.in
++++ b/src/nrnpython/setup.py.in
+@@ -69,8 +69,7 @@ libdirs = [destdir + "@NRN_LIBDIR@",
+ ]
+ epre='-Wl,-R'
+ 
+-@MAC_DARWIN_FALSE@readline="readline"
+-@MAC_DARWIN_TRUE@readline="edit"
++readline="readline"
+ 
+ 
+ hoc_module = Extension(
+-- 
+2.19.1
+
