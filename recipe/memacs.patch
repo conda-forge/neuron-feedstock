@@ -1,0 +1,11 @@
+--- src/memacs/Makefile.am.orig 2018-10-26 16:48:05.000000000 +0200
++++ src/memacs/Makefile.am  2018-10-26 16:10:07.000000000 +0200
+@@ -2,7 +2,7 @@
+ bin_PROGRAMS = memacs
+
+ memacs_SOURCES = main.c
+-memacs_LDADD = libmemacs.la
++memacs_LDADD = libmemacs.la @TERMCAP_LIB@
+
+
+ ## Libraries that we make from this directory:

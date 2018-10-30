@@ -8,9 +8,16 @@ source:
   fn: nrn-{{ version }}.tar.gz
   url: https://www.neuron.yale.edu/ftp/neuron/versions/v{{ version }}/nrn-{{ version }}.tar.gz
   sha256: 85c03010b5674224a3260f666cc0f863dab3734ce0955bf23fdf1427a4d7f8dc
+  patches:
+    - detect-libedit.patch  # [osx]
+    - libnrniv.patch
+    - pkg-config-ncurses.patch
+    - memacs.patch
+    - nocarbon.patch  # [osx]
+    - stdio-h.patch
 
 build:
-  number: 0
+  number: 1000
   skip: true  # [win]
   run_exports:
     - pin_compatible("neuron", max_pin="x.x", min_pin="x.x")
@@ -18,22 +25,28 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
     - autoconf
+    - automake
     - bison
     - flex
     - pkg-config
     - libtool
   host:
     - python
+    - cython
+    - numpy
     - readline
     - ncurses
   run:
     - python
+    - numpy
     - readline
     - ncurses
 
 test:
   requires:
+    - {{ compiler('c') }}
     - scipy
   files:
     - Nap_Et2.mod

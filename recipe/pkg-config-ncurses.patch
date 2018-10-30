@@ -1,0 +1,49 @@
+From 2134eacb87252b7442eec6df14d960a4ee27a7b4 Mon Sep 17 00:00:00 2001
+From: Min RK <benjaminrk@gmail.com>
+Date: Thu, 25 Oct 2018 17:07:57 +0200
+Subject: [PATCH] prefer pkg-config to find ncurses
+
+This gets a better chance of finding ncurses if available, as recent versions may need additional flags such as `-ltinfo`.
+
+Additionally, this allows NCURSES_LIBS, NCURSES_CFLAGS to take highest priority,
+which was previously not possible unless the previous checks failed.
+---
+ m4/acinclude.m4 | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/m4/acinclude.m4 b/m4/acinclude.m4
+index 36740596..13a6305f 100755
+--- a/m4/acinclude.m4
++++ b/m4/acinclude.m4
+@@ -48,11 +48,15 @@ AC_MSG_CHECKING(which library has the termcap functions)
+ _nrn_needmsg=
+ fi
+ AC_CACHE_VAL(nrn_cv_termcap_lib,
+-[AC_CHECK_LIB(ncurses, tgetent, nrn_cv_termcap_lib=libncurses,
++[PKG_CHECK_MODULES([NCURSES], [ncurses], nrn_cv_termcap_lib=pkgconfig_ncurses,
++  [AC_CHECK_LIB(ncurses, tgetent, nrn_cv_termcap_lib=libncurses,
+     [AC_CHECK_LIB(curses, tgetent, nrn_cv_termcap_lib=libcurses,
+-	[AC_CHECK_LIB(termcap, tgetent, nrn_cv_termcap_lib=libtermcap,
+-		[PKG_CHECK_MODULES([NCURSES], [ncurses], nrn_cv_termcap_lib=pkgconfig_ncurses,
+-	    [AC_MSG_ERROR([cannot find one of ncurses, curses, or termcap])])])])])])
++	    [AC_CHECK_LIB(termcap, tgetent, nrn_cv_termcap_lib=libtermcap,
++	      [AC_MSG_ERROR([cannot find one of ncurses, curses, or termcap])]
++      )]
++    )]
++  )]
++)])
+ if test "X$_nrn_needmsg" = "Xyes"; then
+ AC_MSG_CHECKING(which library has the termcap functions)
+ fi
+@@ -60,7 +64,7 @@ AC_MSG_RESULT(using $nrn_cv_termcap_lib)
+ if test $nrn_cv_termcap_lib = libtermcap ; then
+ TERMCAP_LIB=-ltermcap
+ TERMCAP_DEP=
+-TERMCAP_CFLAGS= 
++TERMCAP_CFLAGS=
+ elif test $nrn_cv_termcap_lib = libncurses ; then
+ TERMCAP_LIB=-lncurses
+ TERMCAP_DEP=
+-- 
+2.19.1
+
