@@ -8,8 +8,8 @@ if [[ "$(uname)" == "Darwin" ]]; then
   export CC=clang
   export CXX=clang++
 else
-  export CC=gcc
-  export CXX=g++
+  export CC=$(basename $CC)
+  export CXX=$(basename $CXX)
 fi
 
 aclocal -Im4
