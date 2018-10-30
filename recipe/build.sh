@@ -12,6 +12,9 @@ else
   export CXX=$(basename $CXX)
 fi
 
+# force cython recompile by removing cython-generated sources
+find share/lib/python -name "*.cpp" -exec rm {} \;
+
 aclocal -Im4
 automake
 autoconf
@@ -32,7 +35,7 @@ rm -f "${PREFIX}/lib/*.o"
 # since package installs in lib/python instead of proper site-packages
 cd src/nrnpython
 python setup.py install
-rm -rf $PREFIX/lib/python
+rm -rf $PREFIX/lib/python/neuron
 rm -rf $PREFIX/share/neuron/lib/python
 
 python -c 'import neuron.hoc'
