@@ -7,13 +7,13 @@ export LDFLAGS="${LDFLAGS/-Wl,--as-needed}"
 if [[ "$(uname)" == "Darwin" ]]; then
   export CC=clang
   export CXX=clang++
+  # LDSHARED needed for Python (mac only, apparently)
+  export LDSHARED="${LD:-$CXX} -bundle -undefined dynamic_lookup $LDFLAGS"
 else
   export CC=$(basename $CC)
   export CXX=$(basename $CXX)
 fi
 
-# LDSHARED needed for Python
-export LDSHARED="${LD:-$CXX} -bundle -undefined dynamic_lookup $LDFLAGS"
 
 # force cython recompile by removing cython-generated sources
 find share/lib/python -name "*.cpp" -exec rm {} \;
