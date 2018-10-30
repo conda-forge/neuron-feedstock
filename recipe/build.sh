@@ -12,6 +12,9 @@ else
   export CXX=$(basename $CXX)
 fi
 
+# LDSHARED needed for Python
+export LDSHARED="${LD:-$CXX} -bundle -undefined dynamic_lookup $LDFLAGS"
+
 # force cython recompile by removing cython-generated sources
 find share/lib/python -name "*.cpp" -exec rm {} \;
 
