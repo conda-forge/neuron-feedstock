@@ -1,17 +1,21 @@
-build_number_decrement:
-- '0'
 c_compiler:
 - gcc
+c_compiler_version:
+- '7'
 channel_sources:
-- conda-forge/label/gcc7,defaults
+- conda-forge,defaults
 channel_targets:
-- conda-forge gcc7
+- conda-forge main
 cxx_compiler:
 - gxx
+cxx_compiler_version:
+- '7'
 docker_image:
 - condaforge/linux-anvil-comp7
 ncurses:
 - '6.1'
+numpy:
+- '1.9'
 pin_run_as_build:
   ncurses:
     max_pin: x.x
@@ -21,13 +25,6 @@ pin_run_as_build:
   readline:
     max_pin: x
 python:
-- '3.6'
+- '2.7'
 readline:
 - '7.0'
-zip_keys:
-- - c_compiler
-  - cxx_compiler
-  - channel_sources
-  - channel_targets
-  - docker_image
-  - build_number_decrement

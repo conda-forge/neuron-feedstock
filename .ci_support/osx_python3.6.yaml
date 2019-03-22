@@ -1,21 +1,25 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '10.9'
-build_number_decrement:
-- '0'
 c_compiler:
 - clang
+c_compiler_version:
+- '4'
 channel_sources:
-- conda-forge/label/gcc7,defaults
+- conda-forge,defaults
 channel_targets:
-- conda-forge gcc7
+- conda-forge main
 cxx_compiler:
 - clangxx
+cxx_compiler_version:
+- '4'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 macos_min_version:
 - '10.9'
 ncurses:
 - '6.1'
+numpy:
+- '1.9'
 pin_run_as_build:
   ncurses:
     max_pin: x.x
@@ -25,12 +29,6 @@ pin_run_as_build:
   readline:
     max_pin: x
 python:
-- '3.7'
+- '3.6'
 readline:
 - '7.0'
-zip_keys:
-- - c_compiler
-  - cxx_compiler
-  - channel_sources
-  - channel_targets
-  - build_number_decrement
