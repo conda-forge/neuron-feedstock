@@ -7,7 +7,7 @@ package:
 source:
   fn: nrn-{{ version }}.tar.gz
   url: https://www.neuron.yale.edu/ftp/neuron/versions/v{{ version }}/nrn-{{ version }}.tar.gz
-  sha256: 85c03010b5674224a3260f666cc0f863dab3734ce0955bf23fdf1427a4d7f8dc
+  sha256: 4feefda6a6ed1d8c5e03f61d4a57ecfa8385e2f935f335a546989dcc976fde5b
   patches:
     - detect-libedit.patch  # [osx]
     - libnrniv.patch
