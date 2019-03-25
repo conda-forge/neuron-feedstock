@@ -1,4 +1,4 @@
-{% set version = "7.6.5" %}
+{% set version = "7.6.6" %}
 
 {% set xy = version.rsplit('.', 1)[0] %}
 package:
@@ -8,7 +8,7 @@ package:
 source:
   fn: nrn-{{ version }}.tar.gz
   url: https://www.neuron.yale.edu/ftp/neuron/versions/v{{ xy }}/{{ version }}/nrn-{{ version }}.tar.gz
-  sha256: 4feefda6a6ed1d8c5e03f61d4a57ecfa8385e2f935f335a546989dcc976fde5b
+  sha256: 4d6972c343ad4ad3ca8f020ff1bb28c40d81c87bb18ab7afa37996bf4eb40848
   patches:
     - memacs.patch
 
