@@ -1,4 +1,4 @@
-{% set version = "7.6.5" %}
+{% set version = "7.6.7" %}
 
 {% set xy = version.rsplit('.', 1)[0] %}
 package:
@@ -8,7 +8,7 @@ package:
 source:
   fn: nrn-{{ version }}.tar.gz
   url: https://www.neuron.yale.edu/ftp/neuron/versions/v{{ xy }}/{{ version }}/nrn-{{ version }}.tar.gz
-  sha256: 4feefda6a6ed1d8c5e03f61d4a57ecfa8385e2f935f335a546989dcc976fde5b
+  sha256: 5a6133bfa818ec3278fc8d0ecd312674805ae42854f71552f8cd47d98ff6ad2d
   patches:
     - memacs.patch
 
@@ -16,7 +16,7 @@ build:
   number: 0
   skip: true  # [win]
   run_exports:
-    - pin_compatible("neuron", max_pin="x.x", min_pin="x.x")
+    - {{ pin_compatible("neuron") }}
 
 requirements:
   build:
