@@ -16,7 +16,7 @@ build:
   number: 0
   skip: true  # [win]
   run_exports:
-    - pin_compatible("neuron", max_pin="x.x", min_pin="x.x")
+    - {{ pin_compatible("neuron") }}
 
 requirements:
   build:
