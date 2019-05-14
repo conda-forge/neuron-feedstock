@@ -12,6 +12,8 @@ cxx_compiler_version:
 - '7'
 docker_image:
 - condaforge/linux-anvil-comp7
+mpi:
+- nompi
 ncurses:
 - '6.1'
 numpy:
@@ -25,6 +27,6 @@ pin_run_as_build:
   readline:
     max_pin: x
 python:
-- '2.7'
+- '3.7'
 readline:
 - '7.0'
