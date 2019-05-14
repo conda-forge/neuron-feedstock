@@ -21,11 +21,19 @@ find share/lib/python -name "*.cpp" -exec rm {} \;
 aclocal -Im4
 automake
 autoconf
+
+EXTRA_CONFIG=""
+if [[ ! -z "$mpi" && "$mpi" != "nompi" ]]; then
+  EXTRA_CONFIG="--with-mpi $EXTRA_CONFIG"
+fi
+
+
 ./configure \
     --without-x \
     --with-nrnpython=$PYTHON \
     --prefix=$PREFIX \
-    --exec-prefix=$PREFIX
+    --exec-prefix=$PREFIX \
+    $EXTRA_CONFIG
 
 make -j ${NUM_CPUS:-1}
 make install
