@@ -29,7 +29,7 @@ build:
 
   # there seem to be references to the build env in the output
   # maybe this is the culprit for failed builds
-  merge_build_host: true
+  merge_build_host: true  # [linux]
 
   # add build string so packages can depend on
   # mpi or nompi variants explicitly:
