@@ -3,3 +3,5 @@ nrnivmodl
 
 python -c "import neuron; neuron.test()"
 python -c "import neuron; neuron.h.load_file('stdlib.hoc')"
+
+conda env export
