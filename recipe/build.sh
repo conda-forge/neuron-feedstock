@@ -24,7 +24,7 @@ autoconf
 
 EXTRA_CONFIG=""
 if [[ ! -z "$mpi" && "$mpi" != "nompi" ]]; then
-  EXTRA_CONFIG="--with-mpi CPPFLAGS='' $EXTRA_CONFIG"
+  EXTRA_CONFIG="--with-mpi --with-paranrn CPPFLAGS=\"\" $EXTRA_CONFIG"
 fi
 
 
