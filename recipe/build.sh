@@ -12,6 +12,10 @@ if [[ "$(uname)" == "Darwin" ]]; then
 else
   export CC=$(basename $CC)
   export CXX=$(basename $CXX)
+  # clear C++ compiler flags, which have been identified
+  # as the culprit
+  export CPPFLAGS="-I$PREFIX/include"
+  export CXXFLAGS="-fPIC -I$PREFIX/include"
 fi
 
 
@@ -50,3 +54,6 @@ rm -rf $PREFIX/lib/python/neuron
 rm -rf $PREFIX/share/neuron/lib/python
 
 python -c 'import neuron.hoc'
+python -c "import neuron; assert neuron.h.load_file('stdlib.hoc')"
+python -c "import neuron; assert neuron.h.load_file(neuron.h.neuronhome() + '/lib/hoc/stdlib.hoc')"
+
