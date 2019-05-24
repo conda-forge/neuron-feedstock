@@ -12,6 +12,10 @@ if [[ "$(uname)" == "Darwin" ]]; then
 else
   export CC=$(basename $CC)
   export CXX=$(basename $CXX)
+  # clear C++ compiler flags, which have been identified
+  # as the culprit
+  export CPPFLAGS="-I$PREFIX/include"
+  export CXXFLAGS="-fPIC -I$PREFIX/include"
 fi
 
 
