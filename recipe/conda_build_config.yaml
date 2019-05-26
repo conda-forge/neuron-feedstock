@@ -2,3 +2,6 @@ mpi:
   - nompi
   - mpich
   - openmpi
+openmpi:
+  # doesn't builds with openmpi 4
+  - 3.*
