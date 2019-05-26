@@ -80,6 +80,7 @@ test:
     - scipy
   files:
     - Nap_Et2.mod
+    - test_mpi.py
   imports:
     - neuron
     - neuron.rxd
