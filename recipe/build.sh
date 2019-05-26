@@ -28,7 +28,7 @@ autoconf
 
 EXTRA_CONFIG=""
 if [[ ! -z "$mpi" && "$mpi" != "nompi" ]]; then
-  EXTRA_CONFIG="--with-mpi $EXTRA_CONFIG"
+  EXTRA_CONFIG="--with-paranrn --with-mpi $EXTRA_CONFIG"
 fi
 
 
@@ -54,6 +54,6 @@ rm -rf $PREFIX/lib/python/neuron
 rm -rf $PREFIX/share/neuron/lib/python
 
 python -c 'import neuron.hoc'
-python -c "import neuron; assert neuron.h.load_file('stdlib.hoc')"
 python -c "import neuron; assert neuron.h.load_file(neuron.h.neuronhome() + '/lib/hoc/stdlib.hoc')"
+python -c "import neuron; assert neuron.h.load_file('stdlib.hoc')"
 

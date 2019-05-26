@@ -21,7 +21,7 @@ mpi:
 ncurses:
 - '6.1'
 numpy:
-- '1.9'
+- '1.14'
 pin_run_as_build:
   ncurses:
     max_pin: x.x
