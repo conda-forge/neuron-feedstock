@@ -1,6 +1,6 @@
 {% set version = "7.6.7" %}
 {% set xy = version.rsplit('.', 1)[0] %}
-{% set build = 2 %}
+{% set build = 3 %}
 
 {% if not mpi %}
 # conda-smithy misbehaves if mpi is unset

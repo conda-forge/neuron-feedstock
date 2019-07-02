@@ -33,4 +33,4 @@ pin_run_as_build:
 python:
 - '2.7'
 readline:
-- '7.0'
+- '8.0'
