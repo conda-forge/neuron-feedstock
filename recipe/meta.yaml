@@ -20,7 +20,8 @@ source:
   url: https://www.neuron.yale.edu/ftp/neuron/versions/v{{ xy }}/{{ version }}/nrn-{{ version }}.tar.gz
   sha256: 85a0f999a9cdcc661b0066c32a78239e252f26e74eee5328bf1106393400bfc0
   patches:
-    - memacs.patch
+    - 0001-memacs.patch
+    - 0002-Update-deprecated-MPI_Adress-and-MPI_Type_struct.-Fix-if-a=b-warning.patch
 
 build:
   number: {{ build }}
