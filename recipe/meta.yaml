@@ -1,6 +1,6 @@
-{% set version = "7.6.7" %}
+{% set version = "7.7.2" %}
 {% set xy = version.rsplit('.', 1)[0] %}
-{% set build = 3 %}
+{% set build = 0 %}
 
 {% if not mpi %}
 # conda-smithy misbehaves if mpi is unset
@@ -17,9 +17,8 @@ package:
   version: {{ version }}
 
 source:
-  fn: nrn-{{ version }}.tar.gz
   url: https://www.neuron.yale.edu/ftp/neuron/versions/v{{ xy }}/{{ version }}/nrn-{{ version }}.tar.gz
-  sha256: 5a6133bfa818ec3278fc8d0ecd312674805ae42854f71552f8cd47d98ff6ad2d
+  sha256: 85a0f999a9cdcc661b0066c32a78239e252f26e74eee5328bf1106393400bfc0
   patches:
     - memacs.patch
 
