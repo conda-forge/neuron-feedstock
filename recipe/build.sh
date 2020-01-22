@@ -1,3 +1,7 @@
+# substitute missing files from yale release with those from the github archive
+cp -fR yale/* github/
+cd github
+
 # cancel culling of unused libs
 # it seems to cull libs that are actually used
 export LDFLAGS="${LDFLAGS/-Wl,-dead_strip_dylibs}"
