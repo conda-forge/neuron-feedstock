@@ -77,7 +77,9 @@ requirements:
 test:
   requires:
     - {{ compiler('c') }}
-    - scipy
+    - scipy         # [not (osx and py==38)]
+    # Try to force a scipy version that is currently not available on defaults.
+    - scipy >=1.3.3  # [osx and py==38]
   files:
     - Nap_Et2.mod
     - test_mpi.py
