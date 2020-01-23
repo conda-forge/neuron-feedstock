@@ -1,3 +1,7 @@
+# substitute missing files from yale release with those from the github archive
+cp -fR yale/* github/
+cd github
+
 # cancel culling of unused libs
 # it seems to cull libs that are actually used
 export LDFLAGS="${LDFLAGS/-Wl,-dead_strip_dylibs}"
@@ -43,15 +47,17 @@ make -j ${NUM_CPUS:-1}
 make install
 
 # make install copies a bunch of intermediate files that shouldn't be installed
-rm -f "${PREFIX}/lib/*.la"
-rm -f "${PREFIX}/lib/*.o"
+rm -f "${PREFIX}/lib/"*.la
+rm -f "${PREFIX}/lib/"*.o
 
 # redo Python binding installation
 # since package installs in lib/python instead of proper site-packages
 cd src/nrnpython
 python setup.py install
 rm -rf $PREFIX/lib/python/neuron
-rm -rf $PREFIX/share/neuron/lib/python
+rm -f $PREFIX/lib/python/NEURON-*
+rmdir $PREFIX/lib/python || true
+rm -rf $PREFIX/share/nrn/lib/python
 
 python -c 'import neuron.hoc'
 python -c "import neuron; assert neuron.h.load_file(neuron.h.neuronhome() + '/lib/hoc/stdlib.hoc')"
