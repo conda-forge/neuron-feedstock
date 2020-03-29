@@ -31,6 +31,9 @@ pin_run_as_build:
   readline:
     max_pin: x
 python:
-- '2.7'
+- 3.8.* *_cpython
 readline:
 - '8.0'
+zip_keys:
+- - numpy
+  - python

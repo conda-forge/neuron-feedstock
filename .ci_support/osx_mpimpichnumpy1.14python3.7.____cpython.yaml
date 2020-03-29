@@ -17,7 +17,7 @@ macos_machine:
 macos_min_version:
 - '10.9'
 mpi:
-- openmpi
+- mpich
 ncurses:
 - '6.1'
 numpy:
@@ -31,6 +31,9 @@ pin_run_as_build:
   readline:
     max_pin: x
 python:
-- '3.6'
+- 3.7.* *_cpython
 readline:
 - '8.0'
+zip_keys:
+- - numpy
+  - python
