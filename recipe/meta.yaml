@@ -1,6 +1,6 @@
 {% set version = "7.7.2" %}
 {% set xy = version.rsplit('.', 1)[0] %}
-{% set build = 0 %}
+{% set build = 1 %}
 
 {% if not mpi %}
 # conda-smithy misbehaves if mpi is unset
@@ -33,7 +33,7 @@ build:
 
   # there seem to be references to the build env in the output
   # maybe this is the culprit for failed builds
-  merge_build_host: true  # [linux]
+  merge_build_host: false  # [linux]
 
   # add build string so packages can depend on
   # mpi or nompi variants explicitly:
@@ -77,6 +77,7 @@ requirements:
     - readline
     - ncurses
     - {{ mpi }}  # [mpi != "nompi"]
+    - {{ compiler('c') }}  # [mpi != "nompi"]
 
 test:
   requires:
