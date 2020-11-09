@@ -5,11 +5,9 @@ Home: https://neuron.yale.edu
 
 Package license: BSD 3-Clause
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/neuron-feedstock/blob/master/LICENSE.txt)
 
 Summary: NEURON is a simulator for models of neurons and networks of neuron.
-
-
 
 Current build status
 ====================
@@ -131,27 +129,6 @@ Current build status
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=master">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=master&jobName=osx&configuration=osx_64_mpinompipython3.8.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_mpiopenmpipython3.6.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=master&jobName=osx&configuration=osx_64_mpiopenmpipython3.6.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_mpiopenmpipython3.7.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=master&jobName=osx&configuration=osx_64_mpiopenmpipython3.7.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_mpiopenmpipython3.8.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=master&jobName=osx&configuration=osx_64_mpiopenmpipython3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr>

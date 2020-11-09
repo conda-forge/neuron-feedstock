@@ -17,9 +17,6 @@ jobs:
       osx_64_mpimpichpython3.8.____cpython:
         CONFIG: osx_64_mpimpichpython3.8.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_mpimpichpython3.9.____cpython:
-        CONFIG: osx_64_mpimpichpython3.9.____cpython
-        UPLOAD_PACKAGES: 'True'
       osx_64_mpinompipython3.6.____cpython:
         CONFIG: osx_64_mpinompipython3.6.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -29,10 +26,6 @@ jobs:
       osx_64_mpinompipython3.8.____cpython:
         CONFIG: osx_64_mpinompipython3.8.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_mpinompipython3.9.____cpython:
-        CONFIG: osx_64_mpinompipython3.9.____cpython
-        UPLOAD_PACKAGES: 'True'
-    maxParallel: 8
   timeoutInMinutes: 360
 
   steps:
