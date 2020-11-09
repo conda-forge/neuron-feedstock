@@ -1,7 +1,7 @@
 set -ex
 
 nrnivmodl
-# ./x86_64/special --version
+./x86_64/special --version
 
 conda env export -p $CONDA_PREFIX
 
