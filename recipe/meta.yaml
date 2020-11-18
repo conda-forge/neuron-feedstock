@@ -19,7 +19,7 @@ package:
 source:
   - url: https://github.com/neuronsimulator/nrn/archive/{{ version }}.tar.gz
     sha256: 722c4ccb96e95c352fdfcf8879c6d99dcfebcb36a40ca447678e5dc913244282
-    folder: github
+    #folder: github
 
 build:
   number: {{ build }}
