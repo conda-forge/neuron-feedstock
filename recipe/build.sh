@@ -2,6 +2,7 @@
 #cp -fR yale/* github/
 #cd github
 
+'''
 # cancel culling of unused libs
 # it seems to cull libs that are actually used
 export LDFLAGS="${LDFLAGS/-Wl,-dead_strip_dylibs}"
@@ -21,7 +22,7 @@ else
   export CPPFLAGS="-I$PREFIX/include"
   export CXXFLAGS="-fPIC -I$PREFIX/include"
 fi
-
+'''
 
 # force cython recompile by removing cython-generated sources
 find share/lib/python -name "*.cpp" -exec rm {} \;
