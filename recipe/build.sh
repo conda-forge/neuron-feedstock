@@ -1,6 +1,6 @@
 # substitute missing files from yale release with those from the github archive
-cp -fR yale/* github/
-cd github
+#cp -fR yale/* github/
+#cd github
 
 # cancel culling of unused libs
 # it seems to cull libs that are actually used
@@ -42,8 +42,8 @@ cmake -DCMAKE_INSTALL_PREFIX=$PREFIX \
     -DNRN_ENABLE_THREADS=ON \
     -DNRN_ENABLE_RX3D=ON \
     -DNRN_ENABLE_PYTHON_DYNAMIC=ON \
-    .
-make -j ${NUM_CPUS:-1} install
+    ..
+make install
 
 # make install copies a bunch of intermediate files that shouldn't be installed
 rm -f "${PREFIX}/lib/"*.la
