@@ -26,25 +26,24 @@ fi
 # force cython recompile by removing cython-generated sources
 find share/lib/python -name "*.cpp" -exec rm {} \;
 
-aclocal -Im4
-automake
-autoconf
-
-EXTRA_CONFIG=""
+ENABLE_MPI="OFF"
 if [[ ! -z "$mpi" && "$mpi" != "nompi" ]]; then
-  EXTRA_CONFIG="--with-paranrn --with-mpi $EXTRA_CONFIG"
+  ENABLE_MPI="ON"
 fi
 
 
-./configure \
-    --without-x \
-    --with-nrnpython=$PYTHON \
-    --prefix=$PREFIX \
-    --exec-prefix=$PREFIX \
-    $EXTRA_CONFIG
-
-make -j ${NUM_CPUS:-1}
-make install
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=$PREFIX \
+    -DCMAKE_C_COMPILER=$CC \
+    -DCMAKE_CXX_COMPILER=$CXX \
+    -DNRN_ENABLE_INTERVIEWS=OFF \
+    -DNRN_ENABLE_MPI=$ENABLE_MPI \
+    -DNRN_ENABLE_THREADS=ON \
+    -DNRN_ENABLE_RX3D=ON \
+    -DNRN_ENABLE_PYTHON_DYNAMIC=ON \
+    .
+make -j ${NUM_CPUS:-1} install
 
 # make install copies a bunch of intermediate files that shouldn't be installed
 rm -f "${PREFIX}/lib/"*.la
@@ -62,4 +61,3 @@ rm -rf $PREFIX/share/nrn/lib/python
 python -c 'import neuron.hoc'
 python -c "import neuron; assert neuron.h.load_file(neuron.h.neuronhome() + '/lib/hoc/stdlib.hoc')"
 python -c "import neuron; assert neuron.h.load_file('stdlib.hoc')"
-
