@@ -89,6 +89,7 @@ requirements:
 test:
   requires:
     - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
     - scipy
   files:
     - Nap_Et2.mod
