@@ -61,6 +61,8 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - {{ cdt('libx11-devel') }}  # [linux]
+    - {{ cdt('libxcomposite-devel') }}   # [linux]
     - cmake
     - bison
     - flex
