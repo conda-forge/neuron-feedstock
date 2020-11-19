@@ -8,20 +8,20 @@
 # export LDFLAGS="${LDFLAGS/-Wl,-dead_strip_dylibs}"
 # export LDFLAGS="${LDFLAGS/-Wl,--as-needed}"
 
-# # force shortnames of compilers since package contains references to these
-# if [[ "$(uname)" == "Darwin" ]]; then
-#   export CC=clang
-#   export CXX=clang++
-#   # LDSHARED needed for Python (mac only, apparently)
+# force shortnames of compilers since package contains references to these
+if [[ "$(uname)" == "Darwin" ]]; then
+  export CC=clang
+  export CXX=clang++
+  # LDSHARED needed for Python (mac only, apparently)
 #   export LDSHARED="${LD:-$CXX} -bundle -undefined dynamic_lookup $LDFLAGS"
-# else
-#   export CC=$(basename $CC)
-#   export CXX=$(basename $CXX)
-#   # clear C++ compiler flags, which have been identified
+else
+  export CC=$(basename $CC)
+  export CXX=$(basename $CXX)
+  # clear C++ compiler flags, which have been identified
 #   # as the culprit
 #   export CPPFLAGS="-I$PREFIX/include"
 #   export CXXFLAGS="-fPIC -I$PREFIX/include"
-# fi
+fi
 
 
 # force cython recompile by removing cython-generated sources
