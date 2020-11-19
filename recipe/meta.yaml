@@ -100,7 +100,7 @@ test:
 about:
   home: https://neuron.yale.edu
   license: BSD 3-Clause
-  license_file: github/Copyright
+  license_file: Copyright
   summary: NEURON is a simulator for models of neurons and networks of neuron.
 
 extra:
