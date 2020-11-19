@@ -61,8 +61,16 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ cdt('libx11-devel') }}  # [linux]
-    - {{ cdt('libxcomposite-devel') }}   # [linux]
+    #- {{ cdt('xorg-x11-proto-devel') }}  # [linux]
+    #- {{ cdt('libx11-devel') }}  # [linux]
+    #- {{ cdt('libxcomposite-devel') }}   # [linux]
+    - xorg-libx11
+    - xorg-libxcomposite
+    - xorg-libxext
+    - libxcomposite-devel-cos7-x86_64
+    - libxdamage-devel-cos7-x86_64
+    - libxext-devel-cos7-x86_64
+    #- libxrender-devel-cos7-x86_64
     - cmake
     - bison
     - flex
