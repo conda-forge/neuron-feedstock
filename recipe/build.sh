@@ -46,19 +46,24 @@ cmake -DCMAKE_INSTALL_PREFIX=$PREFIX \
     ..
 make install
 
+
 # make install copies a bunch of intermediate files that shouldn't be installed
-rm -f "${PREFIX}/lib/"*.la
-rm -f "${PREFIX}/lib/"*.o
+# rm -f "${PREFIX}/lib/"*.la
+# rm -f "${PREFIX}/lib/"*.o
 
 # redo Python binding installation
 # since package installs in lib/python instead of proper site-packages
 cd src/nrnpython
-python setup.py install
+$PREFIX/bin/python setup.py install
 rm -rf $PREFIX/lib/python/neuron
 rm -f $PREFIX/lib/python/NEURON-*
 rmdir $PREFIX/lib/python || true
-rm -rf $PREFIX/share/nrn/lib/python
+# rm -rf $PREFIX/share/nrn/lib/python
 
-python -c 'import neuron.hoc'
-python -c "import neuron; assert neuron.h.load_file(neuron.h.neuronhome() + '/lib/hoc/stdlib.hoc')"
-python -c "import neuron; assert neuron.h.load_file('stdlib.hoc')"
+# leave build directory
+cd ../../..
+
+# test imports
+$PREFIX/bin/python -c 'import neuron.hoc'
+$PREFIX/bin/python -c "import neuron; assert neuron.h.load_file(neuron.h.neuronhome() + '/lib/hoc/stdlib.hoc')"
+$PREFIX/bin/python -c "import neuron; assert neuron.h.load_file('stdlib.hoc')"
