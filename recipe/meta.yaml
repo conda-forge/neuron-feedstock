@@ -10,12 +10,7 @@ build:
   skip: true  # [win]
 
 requirements:
-  # build:
-  #   - python
-  #   - pip
-  #   - wheel
-  #   - numpy
-  host:
+  host: 
     - python
     - pip
     - wheel
@@ -33,7 +28,6 @@ test:
     - setuptools
   files:
     - Nap_Et2.mod
-    #- test_mpi.py
   imports:
     - neuron
 
