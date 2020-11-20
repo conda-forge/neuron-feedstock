@@ -1,108 +1,37 @@
-# {% set version = "e68a690" %}
-{% set version = "7.8.1" %}
-# {% set xy = "8.0" %}
-{% set xy = version.rsplit('.', 1)[0] %}
+{% set version = "7.8.1.1" %}
 {% set build = 0 %}
-
-{% if not mpi %}
-# conda-smithy misbehaves if mpi is unset
-{% set mpi = 'nompi' %}
-{% endif %}
-
-{% if mpi == 'nompi' %}
-# prioritize nompi variant via build number
-{% set build = build + 100 %}
-{% endif %}
 
 package:
   name: neuron
   version: {{ version }}
 
-source:
-  # - url: https://github.com/neuronsimulator/nrn/archive/{{ version }}.tar.gz
-  #   sha256: 722c4ccb96e95c352fdfcf8879c6d99dcfebcb36a40ca447678e5dc913244282  # 7.8.1
-  #   patches:
-  #     - 0003-git2nrnversion_h.patch
-  #     - 0004-src_nrniv_CMakelists.patch
-  # This is a bad idea accd. to: https://conda-forge.org/docs/maintainer/adding_pkgs.html#build-from-tarballs-not-repos
-  - git_url: https://github.com/neuronsimulator/nrn.git
-    git_rev: {{ version }}
-    git_depth: -1  # (Defaults to -1/not shallow)
-
-
 build:
   number: {{ build }}
   skip: true  # [win]
 
-  # there seem to be references to the build env in the output
-  # maybe this is the culprit for failed builds
-  merge_build_host: false  # [linux]
-
-  # add build string so packages can depend on
-  # mpi or nompi variants explicitly:
-  # `pkg * mpi_mpich_*` for mpich
-  # `pkg * mpi_*` for any mpi
-  # `pkg * nompi_*` for no mpi
-  {% if mpi == "nompi" %}
-  {% set mpi_prefix = "nompi" %}
-  {% else %}
-  {% set mpi_prefix = "mpi_" + mpi %}
-  {% endif %}
-  string: "{{ mpi_prefix }}_py{{ py }}h{{ PKG_HASH }}_{{ build }}"
-
-  run_exports:
-    {% if mpi == "nompi" %}
-    - {{ pin_compatible("neuron") }}
-    {% else %}
-    - {{ pin_compatible("neuron") }} {{ mpi_prefix }}_*
-    {% endif %}
-
 requirements:
   build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    #- {{ cdt('xorg-x11-proto-devel') }}  # [linux]
-    #- {{ cdt('libx11-devel') }}  # [linux]
-    #- {{ cdt('libxcomposite-devel') }}   # [linux]
-    - xorg-libx11
-    - xorg-libxcomposite
-    - xorg-libxext
-    - libxcomposite-devel-cos7-x86_64
-    - libxdamage-devel-cos7-x86_64
-    - libxext-devel-cos7-x86_64
-    #- libxrender-devel-cos7-x86_64
-    - cmake
-    - bison
-    - flex
-    - cython
-    - pkg-config
-    - libtool
-  host:
     - python
-    - cython
+    - pip
+    - wheel
     - numpy
-    - readline
-    - ncurses
-    - {{ mpi }}  # [mpi != "nompi"]
   run:
     - python
+    - pip
+    - wheel
     - numpy
-    - readline
-    - ncurses
-    - {{ mpi }}  # [mpi != "nompi"]
-    - {{ compiler('c') }}  # [mpi != "nompi"]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
 
 test:
   requires:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - scipy
   files:
     - Nap_Et2.mod
-    - test_mpi.py
+    #- test_mpi.py
   imports:
     - neuron
-    - neuron.rxd
 
 about:
   home: https://neuron.yale.edu
