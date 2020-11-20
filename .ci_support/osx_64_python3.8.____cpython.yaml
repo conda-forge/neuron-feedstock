@@ -14,24 +14,14 @@ cxx_compiler_version:
 - '11'
 macos_machine:
 - x86_64-apple-darwin13.4.0
-mpi:
-- nompi
-ncurses:
-- '6.2'
 numpy:
 - '1.16'
 pin_run_as_build:
-  ncurses:
-    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
-  readline:
-    max_pin: x
 python:
 - 3.8.* *_cpython
-readline:
-- '8.0'
 target_platform:
 - osx-64
 zip_keys:
@@ -39,15 +29,3 @@ zip_keys:
   - cxx_compiler_version
 - - python
   - numpy
-build_platform:
-- linux-64
-
-CONDA_BUILD_SYSROOT:
-- /tmp/tmp.vOikStjxOY/MacOSX10.9.sdk
-
-build_platform:
-- linux-64
-
-CONDA_BUILD_SYSROOT:
-- /tmp/tmp.O9OxqAL0Je/MacOSX10.9.sdk
-

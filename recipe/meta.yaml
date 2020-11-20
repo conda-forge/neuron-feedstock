@@ -10,15 +10,18 @@ build:
   skip: true  # [win]
 
 requirements:
-  build:
+  # build:
+  #   - python
+  #   - pip
+  #   - wheel
+  #   - numpy
+  host:
     - python
     - pip
     - wheel
     - numpy
   run:
     - python
-    - pip
-    - wheel
     - numpy
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
@@ -27,6 +30,7 @@ test:
   requires:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - setuptools
   files:
     - Nap_Et2.mod
     #- test_mpi.py
@@ -36,6 +40,7 @@ test:
 about:
   home: https://neuron.yale.edu
   license: BSD 3-Clause
+  license_family: BSD
   license_file: Copyright
   summary: NEURON is a simulator for models of neurons and networks of neuron.
 
