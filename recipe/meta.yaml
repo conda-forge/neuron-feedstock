@@ -10,7 +10,7 @@ build:
   skip: true  # [win]
 
 requirements:
-  host: 
+  host:
     - python
     - pip
     - wheel
@@ -26,8 +26,10 @@ test:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - setuptools
+    - openmpi
   files:
     - Nap_Et2.mod
+    - test_mpi.py
   imports:
     - neuron
 
