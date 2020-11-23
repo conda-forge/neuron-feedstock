@@ -38,7 +38,9 @@ about:
   license: BSD-3-Clause
   license_family: BSD
   license_file: Copyright
-  summary: NEURON is a simulator for models of neurons and networks of neuron.
+  summary: NEURON is an empirically-based simulator for modeling neurons and networks of neurons
+  doc_url: https://www.neuron.yale.edu/neuron/docs
+  dev_url: https://github.com/neuronsimulator/nrn
 
 extra:
   recipe-maintainers:
