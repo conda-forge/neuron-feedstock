@@ -1,7 +1,3 @@
-# substitute missing files from yale release with those from the github archive
-cp -fR yale/* github/
-cd github
-
 # cancel culling of unused libs
 # it seems to cull libs that are actually used
 export LDFLAGS="${LDFLAGS/-Wl,-dead_strip_dylibs}"
@@ -62,4 +58,3 @@ rm -rf $PREFIX/share/nrn/lib/python
 python -c 'import neuron.hoc'
 python -c "import neuron; assert neuron.h.load_file(neuron.h.neuronhome() + '/lib/hoc/stdlib.hoc')"
 python -c "import neuron; assert neuron.h.load_file('stdlib.hoc')"
-
