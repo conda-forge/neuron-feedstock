@@ -1,3 +1,6 @@
+# check-in with neuron CI when updating
+# https://github.com/neuronsimulator/nrn/blob/HEAD/.github/workflows/neuron-ci.yml
+
 # cancel culling of unused libs
 # it seems to cull libs that are actually used
 export LDFLAGS="${LDFLAGS/-Wl,-dead_strip_dylibs}"
@@ -14,46 +17,39 @@ else
   export CXX=$(basename $CXX)
   # clear C++ compiler flags, which have been identified
   # as the culprit
-  export CPPFLAGS="-I$PREFIX/include"
-  export CXXFLAGS="-fPIC -I$PREFIX/include"
+  # export CPPFLAGS="-I$PREFIX/include"
+  # export CXXFLAGS="-fPIC -I$PREFIX/include"
 fi
 
+# TODO: add interviews builds which depend on x
+CMAKE_CONFIG=" \
+  -DCMAKE_INSTALL_PREFIX=$PREFIX \
+  -DNRN_ENABLE_INTERVIEWS=OFF \
+  -DNRN_ENABLE_PYTHON=ON \
+  -DNRN_ENABLE_PYTHON_DYNAMIC=ON \
+  -DLINK_AGAINST_PYTHON=OFF \
+  -DNRN_MODULE_INSTALL_OPTIONS= \
+"
 
-# force cython recompile by removing cython-generated sources
-find share/lib/python -name "*.cpp" -exec rm {} \;
-
-aclocal -Im4
-automake
-autoconf
-
-EXTRA_CONFIG=""
 if [[ ! -z "$mpi" && "$mpi" != "nompi" ]]; then
-  EXTRA_CONFIG="--with-paranrn --with-mpi $EXTRA_CONFIG"
+  CMAKE_CONFIG="-DNRN_ENABLE_MPI=ON $CMAKE_CONFIG"
+else
+  CMAKE_CONFIG="-DNRN_ENABLE_MPI=OFF $CMAKE_CONFIG"
 fi
 
+mkdir build
+cd build
+cmake $CMAKE_CONFIG ..
+cmake --build . -- -j ${CPU_COUNT:-1}
 
-./configure \
-    --without-x \
-    --with-nrnpython=$PYTHON \
-    --prefix=$PREFIX \
-    --exec-prefix=$PREFIX \
-    $EXTRA_CONFIG
-
-make -j ${NUM_CPUS:-1}
+make -j ${CPU_COUNT:-1}
 make install
 
-# make install copies a bunch of intermediate files that shouldn't be installed
-rm -f "${PREFIX}/lib/"*.la
-rm -f "${PREFIX}/lib/"*.o
+# remove some built files that shouldn't be installed
+rm -rvf $PREFIX/share/nrn/demo/release/x86_64
 
-# redo Python binding installation
-# since package installs in lib/python instead of proper site-packages
-cd src/nrnpython
-python setup.py install
-rm -rf $PREFIX/lib/python/neuron
-rm -f $PREFIX/lib/python/NEURON-*
-rmdir $PREFIX/lib/python || true
-rm -rf $PREFIX/share/nrn/lib/python
+# remove some duplicate files installed in the wrong path
+rm -rvf $PREFIX/lib/python
 
 python -c 'import neuron.hoc'
 python -c "import neuron; assert neuron.h.load_file(neuron.h.neuronhome() + '/lib/hoc/stdlib.hoc')"

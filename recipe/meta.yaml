@@ -47,8 +47,7 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - autoconf
-    - automake
+    - cmake
     - bison
     - flex
     - pkg-config
@@ -73,7 +72,7 @@ test:
     - {{ compiler('c') }}
     - scipy
   files:
-    - Nap_Et2.mod
+    - pump.mod
     - test_mpi.py
   imports:
     - neuron
