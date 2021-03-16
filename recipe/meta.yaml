@@ -19,6 +19,8 @@ package:
 source:
   - url: https://github.com/neuronsimulator/nrn/releases/download/{{ version }}/full-src-package-{{ version }}.tar.gz
     sha256: 7ab615b36370220d5048214463414bc54245489c14c79899d86e7bb6d3549edf
+    patches:
+      - avoid-basename-s.patch  # [linux]
 
 build:
   number: {{ build }}
