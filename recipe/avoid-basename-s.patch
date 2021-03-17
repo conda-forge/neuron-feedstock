@@ -1,0 +1,51 @@
+From acfe3968c10149c1626a0cc305e79dc6f23fee16 Mon Sep 17 00:00:00 2001
+From: Min RK <benjaminrk@gmail.com>
+Date: Tue, 16 Mar 2021 13:44:00 +0100
+Subject: [PATCH] avoid basename -s
+
+not available on ancient CentOS
+---
+ bin/nrnivmodl.in | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/bin/nrnivmodl.in b/bin/nrnivmodl.in
+index d956012..becbea1 100644
+--- a/bin/nrnivmodl.in
++++ b/bin/nrnivmodl.in
+@@ -129,13 +129,13 @@ files=`echo "$files" | sed 's/^ *//'`
+ 
+ base_names=""
+ for i in $files ; do
+-  base_names="$base_names `basename -s .mod $i`"
++  base_names="$base_names `basename $i .mod`"
+ done
+ 
+ if test "$UsingCMake" = "yes" ; then
+   echo -n "Mod files:"
+   for i in $files ; do
+-    base_name=`basename -s .mod "$i"`
++    base_name=`basename "$i" .mod`
+     dir_name=`dirname "$i"`
+     echo -n " \"`unhide_spaces $dir_name`/$base_name.mod\""
+   done
+@@ -197,7 +197,7 @@ if test "$UsingCMake" = "yes" ; then
+         /*) f=$i_hide;; # absolute, fine as is
+         *)  f=../$i_hide;; # relative
+       esac
+-      base_name="`basename -s .c $f`"
++      base_name="`basename $f .c`"
+       dir_name="`dirname $f`"
+       echo "\
+ ./$base_name.o: `escape_spaces "$f"`
+@@ -271,7 +271,7 @@ if test -n "$nrnivmodl_cfiles" ; then
+     ifs="$IFS"
+     IFS=';'
+     for i in $nrnivmodl_cfiles ; do
+-      base_name=`basename -s .c "$i"`
++      base_name=`basename "$i" .c`
+       COBJS="${COBJS}${sp}./${base_name}.o"
+       sp=" "
+     done
+-- 
+2.30.2
+
