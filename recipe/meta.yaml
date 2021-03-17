@@ -68,10 +68,12 @@ requirements:
     - ncurses
     - {{ mpi }}  # [mpi != "nompi"]
     - {{ compiler('c') }}  # [mpi != "nompi"]
+    - {{ compiler('cxx') }}  # [mpi != "nompi"]
 
 test:
   requires:
     - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
     - scipy
   files:
     - pump.mod
