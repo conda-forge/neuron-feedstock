@@ -1,3 +1,4 @@
+set -ex
 # check-in with neuron CI when updating
 # https://github.com/neuronsimulator/nrn/blob/HEAD/.github/workflows/neuron-ci.yml
 
@@ -21,10 +22,14 @@ else
   # export CXXFLAGS="-fPIC -I$PREFIX/include"
 fi
 
-# TODO: add interviews builds which depend on x
+# add -DIV_ENABLE_X11_DYNAMIC=ON to allow x dependencies to be optional?
+# not sure there's a benefit to that, since x can just be a lightweight dependency
+
 CMAKE_CONFIG=" \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
-  -DNRN_ENABLE_INTERVIEWS=OFF \
+  -DNRN_ENABLE_SHARED=ON \
+  -DNRN_ENABLE_INTERVIEWS=ON \
+  -DIV_ENABLE_SHARED=ON \
   -DNRN_ENABLE_PYTHON=ON \
   -DNRN_ENABLE_PYTHON_DYNAMIC=ON \
   -DLINK_AGAINST_PYTHON=OFF \

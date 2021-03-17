@@ -1,6 +1,6 @@
 {% set version = "7.8.2" %}
 {% set xy = version.rsplit('.', 1)[0] %}
-{% set build = 1 %}
+{% set build = 2 %}
 
 {% if not mpi %}
 # conda-smithy misbehaves if mpi is unset
@@ -21,6 +21,7 @@ source:
     sha256: 7ab615b36370220d5048214463414bc54245489c14c79899d86e7bb6d3549edf
     patches:
       - avoid-basename-s.patch  # [linux]
+      - x-sentinel.patch
 
 build:
   number: {{ build }}
@@ -60,12 +61,19 @@ requirements:
     - numpy
     - readline
     - ncurses
+    - xorg-libx11
+    - xorg-libxcomposite
+    - xorg-libxext
     - {{ mpi }}  # [mpi != "nompi"]
   run:
     - python
     - numpy
     - readline
     - ncurses
+    - {{ pin_compatible('xorg-libx11') }}
+    - {{ pin_compatible('xorg-libxcomposite') }}
+    - {{ pin_compatible('xorg-libxext') }}
+
     - {{ mpi }}  # [mpi != "nompi"]
     - {{ compiler('c') }}  # [mpi != "nompi"]
     - {{ compiler('cxx') }}  # [mpi != "nompi"]
