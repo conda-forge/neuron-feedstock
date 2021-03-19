@@ -8,11 +8,15 @@ export LDFLAGS="${LDFLAGS/-Wl,-dead_strip_dylibs}"
 export LDFLAGS="${LDFLAGS/-Wl,--as-needed}"
 
 # force shortnames of compilers since package contains references to these
+
+CMAKE_CONFIG=""
+
 if [[ "$(uname)" == "Darwin" ]]; then
   export CC=clang
   export CXX=clang++
   # LDSHARED needed for Python (mac only, apparently)
   export LDSHARED="${LD:-$CXX} -bundle -undefined dynamic_lookup $LDFLAGS"
+  CMAKE_CONFIG="$CMAKE_CONFIG -DCURSES_NEED_NCURSES=ON"
 else
   export CC=$(basename $CC)
   export CXX=$(basename $CXX)
@@ -25,7 +29,7 @@ fi
 # add -DIV_ENABLE_X11_DYNAMIC=ON to allow x dependencies to be optional?
 # not sure there's a benefit to that, since x can just be a lightweight dependency
 
-CMAKE_CONFIG=" \
+CMAKE_CONFIG="$CMAKE_CONFIG \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
   -DNRN_ENABLE_SHARED=ON \
   -DNRN_ENABLE_INTERVIEWS=ON \
