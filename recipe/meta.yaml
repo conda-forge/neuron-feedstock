@@ -1,6 +1,6 @@
 {% set version = "7.8.2" %}
 {% set xy = version.rsplit('.', 1)[0] %}
-{% set build = 2 %}
+{% set build = 3 %}
 
 {% if not mpi %}
 # conda-smithy misbehaves if mpi is unset
@@ -48,6 +48,11 @@ build:
 
 requirements:
   build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - cython                                 # [build_platform != target_platform]
+    - numpy                                  # [build_platform != target_platform]
+    - pybind11                               # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cmake
@@ -62,7 +67,7 @@ requirements:
     - readline
     - ncurses
     - xorg-libx11
-    - xorg-libxcomposite
+    - xorg-libxcomposite  # [build_platform != target_platform]  # currently not available for osx-arm64
     - xorg-libxext
     - {{ mpi }}  # [mpi != "nompi"]
   run:
@@ -71,7 +76,7 @@ requirements:
     - readline
     - ncurses
     - {{ pin_compatible('xorg-libx11') }}
-    - {{ pin_compatible('xorg-libxcomposite') }}
+    - {{ pin_compatible('xorg-libxcomposite') }}  # [build_platform != target_platform]
     - {{ pin_compatible('xorg-libxext') }}
 
     - {{ mpi }}  # [mpi != "nompi"]

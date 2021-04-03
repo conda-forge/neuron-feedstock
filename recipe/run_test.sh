@@ -1,7 +1,12 @@
 set -ex
 
 nrnivmodl
-./x86_64/special --version
+arch_name="$(uname -m)"
+if [ "${arch_name}" = "x86_64" ]; then
+  ./x86_64/special --version
+elif [ "${arch_name}" = "arm64" ]; then
+  ./arm64/special --version
+fi
 
 conda env export -p $CONDA_PREFIX
 
