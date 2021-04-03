@@ -53,7 +53,7 @@ requirements:
     - cython                                 # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
     - pybind11                               # [build_platform != target_platform]
-    - {{ mpi }}  # [build_platform != target_platform]  # workaround disabled Fortran on Azure for platform osx-arm64
+    - {{ compiler('fortran') }}  # [build_platform != target_platform]  # workaround disabled Fortran on Azure for platform osx-arm64
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cmake
