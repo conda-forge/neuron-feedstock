@@ -55,7 +55,12 @@ make -j ${CPU_COUNT:-1}
 make install
 
 # remove some built files that shouldn't be installed
-rm -rvf $PREFIX/share/nrn/demo/release/x86_64
+arch_name="$(uname -m)"
+if [ "${arch_name}" = "x86_64" ]; then
+  rm -rvf $PREFIX/share/nrn/demo/release/x86_64
+elif [ "${arch_name}" = "arm64" ]; then
+  rm -rvf $PREFIX/share/nrn/demo/release/arm64
+fi
 
 # remove some duplicate files installed in the wrong path
 rm -rvf $PREFIX/lib/python
