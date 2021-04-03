@@ -67,7 +67,7 @@ requirements:
     - readline
     - ncurses
     - xorg-libx11
-    - xorg-libxcomposite  # [build_platform != target_platform]  # currently not available for osx-arm64
+    - xorg-libxcomposite  # [target_platform != "osx-arm64"]  # currently not available for osx-arm64
     - xorg-libxext
     - {{ mpi }}  # [mpi != "nompi"]
   run:
@@ -76,7 +76,7 @@ requirements:
     - readline
     - ncurses
     - {{ pin_compatible('xorg-libx11') }}
-    - {{ pin_compatible('xorg-libxcomposite') }}  # [build_platform != target_platform]
+    - {{ pin_compatible('xorg-libxcomposite') }}  # [target_platform != "osx-arm64"]
     - {{ pin_compatible('xorg-libxext') }}
 
     - {{ mpi }}  # [mpi != "nompi"]
