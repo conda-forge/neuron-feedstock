@@ -53,7 +53,6 @@ requirements:
     - cython                                 # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
     - pybind11                               # [build_platform != target_platform]
-    - {{ compiler('fortran') }}  # [build_platform != target_platform]  # workaround disabled Fortran on Azure for platform osx-arm64
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cmake
@@ -68,7 +67,7 @@ requirements:
     - readline
     - ncurses
     - xorg-libx11
-    - xorg-libxcomposite  # [target_platform != "osx-arm64"]  # currently not available for osx-arm64
+    - xorg-libxcomposite
     - xorg-libxext
     - {{ mpi }}  # [mpi != "nompi"]
   run:
@@ -77,7 +76,7 @@ requirements:
     - readline
     - ncurses
     - {{ pin_compatible('xorg-libx11') }}
-    - {{ pin_compatible('xorg-libxcomposite') }}  # [target_platform != "osx-arm64"]
+    - {{ pin_compatible('xorg-libxcomposite') }}
     - {{ pin_compatible('xorg-libxext') }}
     - {{ mpi }}  # [mpi != "nompi"]
     - {{ compiler('c') }}  # [mpi != "nompi"]
