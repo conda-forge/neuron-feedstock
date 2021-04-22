@@ -9,7 +9,7 @@ export LDFLAGS="${LDFLAGS/-Wl,--as-needed}"
 
 # force shortnames of compilers since package contains references to these
 
-CMAKE_CONFIG=""
+CMAKE_CONFIG=${CMAKE_ARGS}
 
 if [[ "$(uname)" == "Darwin" ]]; then
   export CC=clang
