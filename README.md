@@ -7,14 +7,14 @@ Package license: BSD-3-Clause
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/neuron-feedstock/blob/master/LICENSE.txt)
 
-Summary: NEURON is a simulator for models of neurons and networks of neurons.
+Summary: NEURON is a simulator for models of neurons and networks of neuron.
 
 Current build status
 ====================
 
 
 <table>
-
+    
   <tr>
     <td>Azure</td>
     <td>
@@ -338,3 +338,4 @@ Feedstock Maintainers
 =====================
 
 * [@minrk](https://github.com/minrk/)
+
