@@ -60,6 +60,7 @@ requirements:
     - flex
     - pkg-config
     - libtool
+    - {{ mpi }}                              # [build_platform != target_platform && mpi == "openmpi"]
   host:
     - python
     - cython
