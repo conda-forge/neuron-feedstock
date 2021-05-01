@@ -19,6 +19,7 @@ fi
 # not sure there's a benefit to that, since x can just be a lightweight dependency
 
 if [[ ! -z "$mpi" && "$mpi" != "nompi" ]]; then
+  export OPAL_PREFIX=$PREFIX
   CMAKE_ARGS="-DNRN_ENABLE_MPI=ON $CMAKE_ARGS"
 else
   CMAKE_ARGS="-DNRN_ENABLE_MPI=OFF $CMAKE_ARGS"
