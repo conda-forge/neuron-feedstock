@@ -7,10 +7,8 @@ set -ex
 export LDFLAGS="${LDFLAGS/-Wl,-dead_strip_dylibs}"
 export LDFLAGS="${LDFLAGS/-Wl,--as-needed}"
 
-CMAKE_CONFIG=${CMAKE_ARGS}
-
 if [[ "$target_platform" == osx-* ]]; then
-  CMAKE_CONFIG="$CMAKE_CONFIG -DCURSES_NEED_NCURSES=ON"
+  CMAKE_ARGS="$CMAKE_ARGS -DCURSES_NEED_NCURSES=ON"
 else
   # force shortnames of compilers since package contains references to these
   export CC=$(basename $CC)
