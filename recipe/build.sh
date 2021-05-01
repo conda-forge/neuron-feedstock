@@ -7,29 +7,29 @@ set -ex
 export LDFLAGS="${LDFLAGS/-Wl,-dead_strip_dylibs}"
 export LDFLAGS="${LDFLAGS/-Wl,--as-needed}"
 
-# force shortnames of compilers since package contains references to these
-
 CMAKE_CONFIG=${CMAKE_ARGS}
 
-if [[ "$(uname)" == "Darwin" ]]; then
-  export CC=clang
-  export CXX=clang++
-  # LDSHARED needed for Python (mac only, apparently)
-  export LDSHARED="${LD:-$CXX} -bundle -undefined dynamic_lookup $LDFLAGS"
+if [[ "$target_platform" == osx-* ]]; then
   CMAKE_CONFIG="$CMAKE_CONFIG -DCURSES_NEED_NCURSES=ON"
 else
+  # force shortnames of compilers since package contains references to these
   export CC=$(basename $CC)
   export CXX=$(basename $CXX)
-  # clear C++ compiler flags, which have been identified
-  # as the culprit
-  # export CPPFLAGS="-I$PREFIX/include"
-  # export CXXFLAGS="-fPIC -I$PREFIX/include"
 fi
 
 # add -DIV_ENABLE_X11_DYNAMIC=ON to allow x dependencies to be optional?
 # not sure there's a benefit to that, since x can just be a lightweight dependency
 
-CMAKE_CONFIG="$CMAKE_CONFIG \
+if [[ ! -z "$mpi" && "$mpi" != "nompi" ]]; then
+  CMAKE_ARGS="-DNRN_ENABLE_MPI=ON $CMAKE_ARGS"
+else
+  CMAKE_ARGS="-DNRN_ENABLE_MPI=OFF $CMAKE_ARGS"
+fi
+
+mkdir build
+cd build
+
+cmake $CMAKE_ARGS \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
   -DNRN_ENABLE_SHARED=ON \
   -DNRN_ENABLE_INTERVIEWS=ON \
@@ -38,27 +38,15 @@ CMAKE_CONFIG="$CMAKE_CONFIG \
   -DNRN_ENABLE_PYTHON_DYNAMIC=ON \
   -DLINK_AGAINST_PYTHON=OFF \
   -DNRN_MODULE_INSTALL_OPTIONS= \
-"
-
-if [[ ! -z "$mpi" && "$mpi" != "nompi" ]]; then
-  CMAKE_CONFIG="-DNRN_ENABLE_MPI=ON $CMAKE_CONFIG"
-else
-  CMAKE_CONFIG="-DNRN_ENABLE_MPI=OFF $CMAKE_CONFIG"
-fi
-
-mkdir build
-cd build
-cmake $CMAKE_CONFIG ..
-cmake --build . -- -j ${CPU_COUNT:-1}
+  ..
 
 make -j ${CPU_COUNT:-1}
 make install
 
 # remove some built files that shouldn't be installed
-arch_name="$(uname -m)"
-if [ "${arch_name}" = "x86_64" ]; then
+if [[ "${target_platform}" == *-64 ]]; then
   rm -rvf $PREFIX/share/nrn/demo/release/x86_64
-elif [ "${arch_name}" = "arm64" ]; then
+elif [[ "${target_platform}" = *-aarch64 || "${target_platform}" = *-arm64 ]]; then
   rm -rvf $PREFIX/share/nrn/demo/release/arm64
 fi
 
