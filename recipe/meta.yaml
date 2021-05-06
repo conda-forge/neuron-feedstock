@@ -21,7 +21,9 @@ source:
     sha256: 46f5bea1a5a9c7e0b7dcc74216b3f74602220f5efee1a6d0d2c9b185e61b3873
     patches:
       - x-sentinel.patch
-      - TIFF_DEFINES.patch  # [target_platform == 'osx-arm64']
+      # CMake builds an executable and runs it to generate some files
+      # When cross compiling build the executable for the build platform
+      - TIFF_DEFINES.patch  # [target_platform == 'osx-arm64' and build_platform == 'osx-64']
 
 build:
   number: {{ build }}
