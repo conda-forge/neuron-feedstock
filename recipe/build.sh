@@ -21,6 +21,8 @@ fi
 if [[ ! -z "$mpi" && "$mpi" != "nompi" ]]; then
   export OPAL_PREFIX=$PREFIX
   CMAKE_ARGS="-DNRN_ENABLE_MPI=ON $CMAKE_ARGS"
+  export CC=mpicc
+  export CXX=mpicxx
 else
   CMAKE_ARGS="-DNRN_ENABLE_MPI=OFF $CMAKE_ARGS"
 fi
@@ -39,7 +41,7 @@ cmake $CMAKE_ARGS \
   -DNRN_MODULE_INSTALL_OPTIONS= \
   ..
 
-cmake --build . --parallel ${CPU_COUNT:-1} --target install
+make install -j${CPU_COUNT:-1} VERBOSE=1
 
 # remove some built files that shouldn't be installed
 if [[ "${target_platform}" == *-64 ]]; then
