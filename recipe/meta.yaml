@@ -20,7 +20,6 @@ source:
   - url: https://github.com/neuronsimulator/nrn/releases/download/{{ version }}/full-src-package-{{ version }}.tar.gz
     sha256: 46f5bea1a5a9c7e0b7dcc74216b3f74602220f5efee1a6d0d2c9b185e61b3873
     patches:
-      - avoid-basename-s.patch  # [linux]
       - x-sentinel.patch
 
 build:
