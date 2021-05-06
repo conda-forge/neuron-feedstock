@@ -19,7 +19,7 @@ index b783083..5725bcf 100644
 +                            "-arch x86_64 ${TIFF_DEFINES}")
 
  add_executable(mkg3states ${CMAKE_CURRENT_SOURCE_DIR}/TIFF/mkg3states.c)
-+target_link_options(mkg3states PRIVATE "-arch x86_64")
++target_link_options(mkg3states PRIVATE -arch x86_64)
  target_include_directories(mkg3states PUBLIC ${IV_PROJECT_SOURCE_DIR}/src/include/TIFF)
 --
 2.30.2
