@@ -39,8 +39,7 @@ cmake $CMAKE_ARGS \
   -DNRN_MODULE_INSTALL_OPTIONS= \
   ..
 
-make -j ${CPU_COUNT:-1}
-make install
+cmake --build . --parallel ${CPU_COUNT:-1} --target install
 
 # remove some built files that shouldn't be installed
 if [[ "${target_platform}" == *-64 ]]; then

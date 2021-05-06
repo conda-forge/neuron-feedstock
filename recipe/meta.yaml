@@ -1,6 +1,6 @@
-{% set version = "7.8.2" %}
+{% set version = "8.0.0" %}
 {% set xy = version.rsplit('.', 1)[0] %}
-{% set build = 3 %}
+{% set build = 0 %}
 
 {% if not mpi %}
 # conda-smithy misbehaves if mpi is unset
@@ -18,10 +18,11 @@ package:
 
 source:
   - url: https://github.com/neuronsimulator/nrn/releases/download/{{ version }}/full-src-package-{{ version }}.tar.gz
-    sha256: 7ab615b36370220d5048214463414bc54245489c14c79899d86e7bb6d3549edf
+    sha256: 46f5bea1a5a9c7e0b7dcc74216b3f74602220f5efee1a6d0d2c9b185e61b3873
     patches:
       - avoid-basename-s.patch  # [linux]
       - x-sentinel.patch
+      - TIFF_DEFINES.patch  # [target_platform == 'osx-arm64']
 
 build:
   number: {{ build }}
