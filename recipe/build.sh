@@ -28,7 +28,7 @@ else
 fi
 
 if [[ "$build_platform" == "osx-64" && "$target_platform" == "osx-arm64" ]]; then
-  CMAKE_ARGS="$CMAKE_ARGS -DNRN_NMODL_CXX_FLAGS='-arch x86_64 -arch arm64'"
+  NRN_NMODL_CXX_FLAGS="-arch x86_64 -arch arm64"
 fi
 
 mkdir build
@@ -44,6 +44,7 @@ cmake $CMAKE_ARGS \
   -DPYTHON_EXECUTABLE=$PREFIX/bin/python \
   -DLINK_AGAINST_PYTHON=OFF \
   -DNRN_MODULE_INSTALL_OPTIONS= \
+  -DNRN_NMODL_CXX_FLAGS="${NRN_NMODL_CXX_FLAGS}" \
   ..
 
 make install -j${CPU_COUNT:-1} VERBOSE=1
