@@ -27,6 +27,10 @@ else
   CMAKE_ARGS="-DNRN_ENABLE_MPI=OFF $CMAKE_ARGS"
 fi
 
+if [[ "$build_platform" == "osx-64" && "$target_platform" == "osx-arm64" ]]; then
+  CMAKE_ARGS="$CMAKE_ARGS -DNRN_NMODL_CXX_FLAGS=-arch;x86_64;-arch;arm64"
+fi
+
 mkdir build
 cd build
 
