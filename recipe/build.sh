@@ -7,55 +7,54 @@ set -ex
 export LDFLAGS="${LDFLAGS/-Wl,-dead_strip_dylibs}"
 export LDFLAGS="${LDFLAGS/-Wl,--as-needed}"
 
-# force shortnames of compilers since package contains references to these
-
-CMAKE_CONFIG=""
-
-if [[ "$(uname)" == "Darwin" ]]; then
-  export CC=clang
-  export CXX=clang++
-  # LDSHARED needed for Python (mac only, apparently)
-  export LDSHARED="${LD:-$CXX} -bundle -undefined dynamic_lookup $LDFLAGS"
-  CMAKE_CONFIG="$CMAKE_CONFIG -DCURSES_NEED_NCURSES=ON"
+if [[ "$target_platform" == osx-* ]]; then
+  CMAKE_ARGS="$CMAKE_ARGS -DCURSES_NEED_NCURSES=ON"
 else
+  # force shortnames of compilers since package contains references to these
   export CC=$(basename $CC)
   export CXX=$(basename $CXX)
-  # clear C++ compiler flags, which have been identified
-  # as the culprit
-  # export CPPFLAGS="-I$PREFIX/include"
-  # export CXXFLAGS="-fPIC -I$PREFIX/include"
 fi
 
 # add -DIV_ENABLE_X11_DYNAMIC=ON to allow x dependencies to be optional?
 # not sure there's a benefit to that, since x can just be a lightweight dependency
 
-CMAKE_CONFIG="$CMAKE_CONFIG \
+if [[ ! -z "$mpi" && "$mpi" != "nompi" ]]; then
+  export OPAL_PREFIX=$PREFIX
+  CMAKE_ARGS="-DNRN_ENABLE_MPI=ON $CMAKE_ARGS"
+  export CC=mpicc
+  export CXX=mpicxx
+else
+  CMAKE_ARGS="-DNRN_ENABLE_MPI=OFF $CMAKE_ARGS"
+fi
+
+if [[ "$build_platform" == "osx-64" && "$target_platform" == "osx-arm64" ]]; then
+  NRN_NMODL_CXX_FLAGS="-arch x86_64 -arch arm64"
+fi
+
+mkdir build
+cd build
+
+cmake $CMAKE_ARGS \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
   -DNRN_ENABLE_SHARED=ON \
   -DNRN_ENABLE_INTERVIEWS=ON \
   -DIV_ENABLE_SHARED=ON \
   -DNRN_ENABLE_PYTHON=ON \
   -DNRN_ENABLE_PYTHON_DYNAMIC=ON \
+  -DPYTHON_EXECUTABLE=$PREFIX/bin/python \
   -DLINK_AGAINST_PYTHON=OFF \
   -DNRN_MODULE_INSTALL_OPTIONS= \
-"
+  -DNRN_NMODL_CXX_FLAGS="${NRN_NMODL_CXX_FLAGS}" \
+  ..
 
-if [[ ! -z "$mpi" && "$mpi" != "nompi" ]]; then
-  CMAKE_CONFIG="-DNRN_ENABLE_MPI=ON $CMAKE_CONFIG"
-else
-  CMAKE_CONFIG="-DNRN_ENABLE_MPI=OFF $CMAKE_CONFIG"
-fi
-
-mkdir build
-cd build
-cmake $CMAKE_CONFIG ..
-cmake --build . -- -j ${CPU_COUNT:-1}
-
-make -j ${CPU_COUNT:-1}
-make install
+make install -j${CPU_COUNT:-1} VERBOSE=1
 
 # remove some built files that shouldn't be installed
-rm -rvf $PREFIX/share/nrn/demo/release/x86_64
+if [[ "${target_platform}" == *-64 ]]; then
+  rm -rvf $PREFIX/share/nrn/demo/release/x86_64
+elif [[ "${target_platform}" = *-aarch64 || "${target_platform}" = *-arm64 ]]; then
+  rm -rvf $PREFIX/share/nrn/demo/release/arm64
+fi
 
 # remove some duplicate files installed in the wrong path
 rm -rvf $PREFIX/lib/python

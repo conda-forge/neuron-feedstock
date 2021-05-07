@@ -1,0 +1,25 @@
+From 5cb5f8a5ebf30fca4d10fca323725b4bcc096209 Mon Sep 17 00:00:00 2001
+From: Espen Hagen <2492641+espenhgn@users.noreply.github.com>
+Date: Wed, 5 May 2021 10:57:03 +0200
+Subject: [PATCH] osx-arm64 nonfix
+
+---
+ external//src/lib/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/external/iv/src/lib/CMakeLists.txt b/external/iv/src/lib/CMakeLists.txt
+index b783083..5725bcf 100644
+--- a/external/iv/src/lib/CMakeLists.txt
++++ b/external/iv/src/lib/CMakeLists.txt
+@@ -347,7 +347,8 @@ set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/TIFF/tif_fax3.c
+ set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/TIFF/mkg3states.c
+                             PROPERTIES
+                             COMPILE_FLAGS
+-                            ${TIFF_DEFINES})
++                            "-arch x86_64 ${TIFF_DEFINES}")
+
+ add_executable(mkg3states ${CMAKE_CURRENT_SOURCE_DIR}/TIFF/mkg3states.c)
++target_link_options(mkg3states PRIVATE -arch x86_64)
+ target_include_directories(mkg3states PUBLIC ${IV_PROJECT_SOURCE_DIR}/src/include/TIFF)
+--
+2.30.2
