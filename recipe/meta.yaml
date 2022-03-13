@@ -49,6 +49,7 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - make  # [linux]
     - cmake
     - bison
     - flex
