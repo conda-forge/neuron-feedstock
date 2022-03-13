@@ -73,7 +73,6 @@ requirements:
     - {{ pin_compatible('xorg-libx11') }}
     - {{ pin_compatible('xorg-libxcomposite') }}
     - {{ pin_compatible('xorg-libxext') }}
-
     - {{ mpi }}  # [mpi != "nompi"]
     - {{ compiler('c') }}  # [mpi != "nompi"]
     - {{ compiler('cxx') }}  # [mpi != "nompi"]
@@ -82,6 +81,7 @@ test:
   requires:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - make  # [linux]
     - scipy
   files:
     - pump.mod
