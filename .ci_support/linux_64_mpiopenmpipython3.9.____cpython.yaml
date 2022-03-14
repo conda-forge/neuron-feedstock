@@ -1,28 +1,30 @@
-MACOSX_DEPLOYMENT_TARGET:
-- '10.9'
 c_compiler:
-- clang
+- gcc
 c_compiler_version:
-- '11'
+- '10'
+cdt_name:
+- cos6
 channel_sources:
-- conda-forge,defaults
+- conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- clangxx
+- gxx
 cxx_compiler_version:
-- '11'
-macos_machine:
-- x86_64-apple-darwin13.4.0
+- '10'
+docker_image:
+- quay.io/condaforge/linux-anvil-cos7-x86_64
 mpi:
-- nompi
+- openmpi
+mpich:
+- '4'
 ncurses:
-- '6.2'
+- '6'
 numpy:
 - '1.19'
+openmpi:
+- '4'
 pin_run_as_build:
-  ncurses:
-    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
@@ -33,7 +35,7 @@ python:
 readline:
 - '8'
 target_platform:
-- osx-64
+- linux-64
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version

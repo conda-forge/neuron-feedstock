@@ -38,6 +38,8 @@ CMAKE_CONFIG="$CMAKE_CONFIG \
   -DNRN_ENABLE_PYTHON_DYNAMIC=ON \
   -DLINK_AGAINST_PYTHON=OFF \
   -DNRN_MODULE_INSTALL_OPTIONS= \
+  -DCMAKE_C_COMPILER=$CC \
+  -DCMAKE_CXX_COMPILER=$CXX \
 "
 
 if [[ ! -z "$mpi" && "$mpi" != "nompi" ]]; then
@@ -49,10 +51,8 @@ fi
 mkdir build
 cd build
 cmake $CMAKE_CONFIG ..
-cmake --build . -- -j ${CPU_COUNT:-1}
+cmake --build . --parallel ${CPU_COUNT:-1} --target install
 
-make -j ${CPU_COUNT:-1}
-make install
 
 # remove some built files that shouldn't be installed
 rm -rvf $PREFIX/share/nrn/demo/release/x86_64
