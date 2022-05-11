@@ -1,6 +1,6 @@
 {% set version = "8.0.2" %}
 {% set xy = version.rsplit('.', 1)[0] %}
-{% set build = 1 %}
+{% set build = 2 %}
 
 {% if not mpi %}
 # conda-smithy misbehaves if mpi is unset
@@ -40,9 +40,9 @@ build:
 
   run_exports:
     {% if mpi == "nompi" %}
-    - {{ pin_compatible("neuron") }}
+    - {{ pin_subpackage("neuron") }}
     {% else %}
-    - {{ pin_compatible("neuron") }} {{ mpi_prefix }}_*
+    - {{ pin_subpackage("neuron") }} {{ mpi_prefix }}_*
     {% endif %}
 
 requirements:
