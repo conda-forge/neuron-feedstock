@@ -15,23 +15,21 @@ cxx_compiler_version:
 docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
 mpi:
-- mpich
+- nompi
 mpich:
 - '4'
 ncurses:
 - '6'
 numpy:
-- '1.19'
+- '1.23'
 openmpi:
 - '4'
 pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
-  readline:
-    max_pin: x
 python:
-- 3.7.* *_cpython
+- 3.11.* *_cpython
 readline:
 - '8'
 target_platform:
