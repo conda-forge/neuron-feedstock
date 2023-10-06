@@ -1,11 +1,11 @@
-About neuron
-============
+About neuron-feedstock
+======================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/neuron-feedstock/blob/main/LICENSE.txt)
 
 Home: https://neuron.yale.edu
 
 Package license: BSD-3-Clause
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/neuron-feedstock/blob/main/LICENSE.txt)
 
 Summary: NEURON is a simulator for models of neurons and networks of neuron.
 
@@ -27,171 +27,213 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_64_mpimpichnumpy1.20python3.8.____cpython</td>
+              <td>linux_64_mpimpichnumpy1.22python3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpimpichnumpy1.20python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_mpimpichnumpy1.22python3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_mpimpichnumpy1.20python3.9.____cpython</td>
+              <td>linux_64_mpimpichnumpy1.22python3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpimpichnumpy1.20python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_mpimpichnumpy1.22python3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_mpimpichnumpy1.21python3.10.____cpython</td>
+              <td>linux_64_mpimpichnumpy1.22python3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpimpichnumpy1.21python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_mpimpichnumpy1.22python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_64_mpimpichnumpy1.23python3.11.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpimpichnumpy1.23python3.11.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_mpimpichnumpy1.23python3.11.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_mpinompinumpy1.20python3.8.____cpython</td>
+              <td>linux_64_mpimpichnumpy1.26python3.12.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpinompinumpy1.20python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_mpimpichnumpy1.26python3.12.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_mpinompinumpy1.20python3.9.____cpython</td>
+              <td>linux_64_mpinompinumpy1.22python3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpinompinumpy1.20python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_mpinompinumpy1.22python3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_mpinompinumpy1.21python3.10.____cpython</td>
+              <td>linux_64_mpinompinumpy1.22python3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpinompinumpy1.21python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_mpinompinumpy1.22python3.8.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_mpinompinumpy1.22python3.9.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_mpinompinumpy1.22python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_64_mpinompinumpy1.23python3.11.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpinompinumpy1.23python3.11.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_mpinompinumpy1.23python3.11.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_mpiopenmpinumpy1.20python3.8.____cpython</td>
+              <td>linux_64_mpinompinumpy1.26python3.12.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpiopenmpinumpy1.20python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_mpinompinumpy1.26python3.12.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_mpiopenmpinumpy1.20python3.9.____cpython</td>
+              <td>linux_64_mpiopenmpinumpy1.22python3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpiopenmpinumpy1.20python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_mpiopenmpinumpy1.22python3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_mpiopenmpinumpy1.21python3.10.____cpython</td>
+              <td>linux_64_mpiopenmpinumpy1.22python3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpiopenmpinumpy1.21python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_mpiopenmpinumpy1.22python3.8.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_mpiopenmpinumpy1.22python3.9.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_mpiopenmpinumpy1.22python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_64_mpiopenmpinumpy1.23python3.11.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpiopenmpinumpy1.23python3.11.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_mpiopenmpinumpy1.23python3.11.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_mpimpichnumpy1.20python3.8.____cpython</td>
+              <td>linux_64_mpiopenmpinumpy1.26python3.12.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpimpichnumpy1.20python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_mpiopenmpinumpy1.26python3.12.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_mpimpichnumpy1.20python3.9.____cpython</td>
+              <td>osx_64_mpimpichnumpy1.22python3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpimpichnumpy1.20python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_mpimpichnumpy1.22python3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_mpimpichnumpy1.21python3.10.____cpython</td>
+              <td>osx_64_mpimpichnumpy1.22python3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpimpichnumpy1.21python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_mpimpichnumpy1.22python3.8.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64_mpimpichnumpy1.22python3.9.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_mpimpichnumpy1.22python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_64_mpimpichnumpy1.23python3.11.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpimpichnumpy1.23python3.11.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_mpimpichnumpy1.23python3.11.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_mpinompinumpy1.20python3.8.____cpython</td>
+              <td>osx_64_mpimpichnumpy1.26python3.12.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpinompinumpy1.20python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_mpimpichnumpy1.26python3.12.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_mpinompinumpy1.20python3.9.____cpython</td>
+              <td>osx_64_mpinompinumpy1.22python3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpinompinumpy1.20python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_mpinompinumpy1.22python3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_mpinompinumpy1.21python3.10.____cpython</td>
+              <td>osx_64_mpinompinumpy1.22python3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpinompinumpy1.21python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_mpinompinumpy1.22python3.8.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64_mpinompinumpy1.22python3.9.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_mpinompinumpy1.22python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_64_mpinompinumpy1.23python3.11.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpinompinumpy1.23python3.11.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_mpinompinumpy1.23python3.11.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_mpiopenmpinumpy1.20python3.8.____cpython</td>
+              <td>osx_64_mpinompinumpy1.26python3.12.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpiopenmpinumpy1.20python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_mpinompinumpy1.26python3.12.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_mpiopenmpinumpy1.20python3.9.____cpython</td>
+              <td>osx_64_mpiopenmpinumpy1.22python3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpiopenmpinumpy1.20python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_mpiopenmpinumpy1.22python3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_mpiopenmpinumpy1.21python3.10.____cpython</td>
+              <td>osx_64_mpiopenmpinumpy1.22python3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpiopenmpinumpy1.21python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_mpiopenmpinumpy1.22python3.8.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64_mpiopenmpinumpy1.22python3.9.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_mpiopenmpinumpy1.22python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_64_mpiopenmpinumpy1.23python3.11.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpiopenmpinumpy1.23python3.11.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_mpiopenmpinumpy1.23python3.11.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64_mpiopenmpinumpy1.26python3.12.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=679&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/neuron-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_mpiopenmpinumpy1.26python3.12.____cpython" alt="variant">
                 </a>
               </td>
             </tr>
