@@ -1,6 +1,6 @@
 {% set version = "8.0.2" %}
 {% set xy = version.rsplit('.', 1)[0] %}
-{% set build = 3 %}
+{% set build = 4 %}
 
 {% if not mpi %}
 # conda-smithy misbehaves if mpi is unset
@@ -75,6 +75,7 @@ requirements:
     - {{ pin_compatible('xorg-libxext') }}
     - {{ mpi }}  # [mpi != "nompi"]
     - {{ compiler('c') }}  # [mpi != "nompi"]
+    - {{ stdlib("c") }}    # [mpi != "nompi"]
     - {{ compiler('cxx') }}  # [mpi != "nompi"]
 
 test:
