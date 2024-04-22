@@ -1,6 +1,6 @@
-{% set version = "8.0.2" %}
+{% set version = "8.2.4" %}
 {% set xy = version.rsplit('.', 1)[0] %}
-{% set build = 4 %}
+{% set build = 0 %}
 
 {% if not mpi %}
 # conda-smithy misbehaves if mpi is unset
@@ -17,8 +17,8 @@ package:
   version: {{ version }}
 
 source:
-  - url: https://github.com/neuronsimulator/nrn/releases/download/{{ version }}/full-src-package-{{ version }}.tar.gz
-    sha256: d9d0e401832e6b6f6f35e24d4ce32d2f6ed0e46768ebab92db17ffe8bc978838
+  - url: https://github.com/neuronsimulator/nrn/releases/download/{{ version }}/nrn-full-src-package-{{ version }}.tar.gz
+    sha256: 35654c1af7e198b53b34c923be5913d5c98fbc0e2d15515ef9157ef2fdff1e52
     patches:
       - x-sentinel.patch
 
