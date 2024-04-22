@@ -57,6 +57,9 @@ requirements:
     - python
     - cython <3.0
     - setuptools
+    # setup_requires
+    - setuptools_scm
+    - wheel
     - numpy
     - readline
     - ncurses
@@ -67,8 +70,10 @@ requirements:
   run:
     - python
     - numpy
+    - packaging
     - readline
     - ncurses
+    - setuptools
     - {{ pin_compatible('xorg-libx11') }}
     - {{ pin_compatible('xorg-libxcomposite') }}
     - {{ pin_compatible('xorg-libxext') }}
