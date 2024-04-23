@@ -53,13 +53,10 @@ cd build
 cmake $CMAKE_CONFIG ..
 cmake --build . --parallel ${CPU_COUNT:-1} --target install
 
-
-# remove some built files that shouldn't be installed
-rm -rvf $PREFIX/share/nrn/demo/release/x86_64
-
-# remove some duplicate files installed in the wrong path
+# relocate python install from lib/python to site-packages
+mv -v $PREFIX/lib/python/neuron $SP_DIR/neuron
 rm -rvf $PREFIX/lib/python
 
-python -c 'import neuron.hoc'
-python -c "import neuron; assert neuron.h.load_file(neuron.h.neuronhome() + '/lib/hoc/stdlib.hoc')"
-python -c "import neuron; assert neuron.h.load_file('stdlib.hoc')"
+$PYTHON -c 'import neuron.hoc'
+$PYTHON -c "import neuron; assert neuron.h.load_file(neuron.h.neuronhome() + '/lib/hoc/stdlib.hoc')"
+$PYTHON -c "import neuron; assert neuron.h.load_file('stdlib.hoc')"
