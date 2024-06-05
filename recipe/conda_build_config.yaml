@@ -3,7 +3,5 @@ mpi:
   - mpich
   - openmpi
 
-c_stdlib_version:  # [osx and x86_64]
-  - "10.9"  # [osx and x86_64]
-MACOSX_DEPLOYMENT_TARGET:  # [osx and x86_64]
-  - "10.9"  # [osx and x86_64]
+libcxx:  # [osx]
+  - 16  # [osx]
