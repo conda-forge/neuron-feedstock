@@ -1,5 +1,5 @@
 {% set version = "8.2.4" %}
-{% set build = 3 %}
+{% set build = 4 %}
 
 {% if not mpi %}
 # conda-smithy misbehaves if mpi is unset
