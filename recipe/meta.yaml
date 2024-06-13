@@ -16,8 +16,10 @@ package:
   version: {{ version }}
 
 source:
-  - url: https://github.com/neuronsimulator/nrn/releases/download/{{ version }}/nrn-full-src-package-{{ version }}.tar.gz
-    sha256: 35654c1af7e198b53b34c923be5913d5c98fbc0e2d15515ef9157ef2fdff1e52
+  url: https://github.com/neuronsimulator/nrn/releases/download/{{ version }}/nrn-full-src-package-{{ version }}.tar.gz
+  sha256: 35654c1af7e198b53b34c923be5913d5c98fbc0e2d15515ef9157ef2fdff1e52
+  patches:
+    - TIFF_DEFINES.patch  # [osx and build_platform != target_platform]
 
 build:
   number: {{ build }}
@@ -54,6 +56,11 @@ requirements:
     - flex
     - pkg-config
     - libtool
+    - python  # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}  # [build_platform != target_platform]
+    - cython <3.0  # [build_platform != target_platform]
+    - numpy  # [build_platform != target_platform]
+    - {{ mpi }}  # [build_platform != target_platform and mpi == "openmpi"]
   host:
     - libcxx  # [osx]
     - python
