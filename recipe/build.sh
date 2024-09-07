@@ -50,7 +50,7 @@ fi
 
 mkdir build
 cd build
-cmake $CMAKE_CONFIG ..
+cmake ${CMAKE_ARGS} $CMAKE_CONFIG ..
 cmake --build . --parallel ${CPU_COUNT:-1} --target install
 
 # relocate python install from lib/python to site-packages
