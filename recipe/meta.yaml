@@ -47,15 +47,15 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ stdlib('c') }}
-    - libcxx  # [osx]
+    # - libcxx  # [osx]
     - make  # [linux]
-    - cmake
+    - cmake <4
     - bison
     - flex
     - pkg-config
     - libtool
   host:
-    - libcxx  # [osx]
+    # - libcxx  # [osx]
     - python
     - cython <3.0
     - setuptools
