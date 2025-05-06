@@ -31,7 +31,7 @@ requirements:
     - if: osx
       then: libcxx
     - make
-    - cmake
+    - cmake <4
     - bison
     - flex
     - pkg-config
@@ -87,8 +87,7 @@ tests:
       run:
         - ${{ compiler('c') }}
         - ${{ compiler('cxx') }}
-        - if: linux
-          then: make
+        - make
         - scipy
     script:
       - bash run_test.sh
