@@ -42,7 +42,7 @@ requirements:
     # setup_requires
     - setuptools_scm
     - wheel
-    - numpy
+    - numpy <2
     - readline
     - ncurses
     - xorg-libx11
@@ -53,7 +53,7 @@ requirements:
       then: ${{ mpi }}
   run:
     - python
-    - numpy
+    - numpy <2
     - packaging
     - readline
     - ncurses
