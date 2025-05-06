@@ -28,8 +28,6 @@ requirements:
     - ${{ compiler('c') }}
     - ${{ compiler('cxx') }}
     - ${{ stdlib('c') }}
-    - if: osx
-      then: libcxx
     - make
     - cmake <4
     - bison
@@ -37,8 +35,6 @@ requirements:
     - pkg-config
     - libtool
   host:
-    - if: osx
-      then: libcxx
     - python
     - cython <3.0
     - setuptools
