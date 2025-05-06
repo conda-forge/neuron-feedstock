@@ -45,10 +45,12 @@ requirements:
     - numpy <2
     - readline
     - ncurses
-    - xorg-libx11
-    - xorg-libxcomposite
-    - xorg-libxext
-    - xorg-xorgproto
+    - if: linux
+      then:
+        - xorg-libx11
+        - xorg-libxcomposite
+        - xorg-libxext
+        - xorg-xorgproto
     - if: mpi != "nompi"
       then: ${{ mpi }}
   run:
