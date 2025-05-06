@@ -51,7 +51,7 @@ fi
 mkdir build
 cd build
 cmake $CMAKE_CONFIG ..
-cmake --build . --parallel ${CPU_COUNT:-1} --target install
+cmake --build . --parallel ${CPU_COUNT:-1} --target install --verbose
 
 # relocate python install from lib/python to site-packages
 mv -v $PREFIX/lib/python/neuron $SP_DIR/neuron

@@ -38,6 +38,7 @@ requirements:
     - python
     - cython <3.0
     - setuptools
+    - pip
     # setup_requires
     - setuptools_scm
     - wheel
