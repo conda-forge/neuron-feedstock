@@ -1,5 +1,5 @@
 {% set version = "8.2.4" %}
-{% set build = 4 %}
+{% set build = 5 %}
 
 {% if not mpi %}
 # conda-smithy misbehaves if mpi is unset
@@ -47,15 +47,15 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ stdlib('c') }}
-    - libcxx  # [osx]
+    # - libcxx  # [osx]
     - make  # [linux]
-    - cmake
+    - cmake <4
     - bison
     - flex
     - pkg-config
     - libtool
   host:
-    - libcxx  # [osx]
+    # - libcxx  # [osx]
     - python
     - cython <3.0
     - setuptools
@@ -68,6 +68,7 @@ requirements:
     - xorg-libx11
     - xorg-libxcomposite
     - xorg-libxext
+    - xorg-xorgproto
     - {{ mpi }}  # [mpi != "nompi"]
   run:
     - python

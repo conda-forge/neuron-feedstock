@@ -2,6 +2,3 @@ mpi:
   - nompi
   - mpich
   - openmpi
-
-libcxx:  # [osx]
-  - 16  # [osx]
