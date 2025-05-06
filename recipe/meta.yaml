@@ -68,6 +68,7 @@ requirements:
     - xorg-libx11
     - xorg-libxcomposite
     - xorg-libxext
+    - xorg-xorgproto
     - {{ mpi }}  # [mpi != "nompi"]
   run:
     - python
