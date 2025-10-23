@@ -1,5 +1,5 @@
-{% set version = "8.2.4" %}
-{% set build = 5 %}
+{% set version = "9.0.0" %}
+{% set build = 0 %}
 
 {% if not mpi %}
 # conda-smithy misbehaves if mpi is unset
@@ -17,7 +17,7 @@ package:
 
 source:
   - url: https://github.com/neuronsimulator/nrn/releases/download/{{ version }}/nrn-full-src-package-{{ version }}.tar.gz
-    sha256: 35654c1af7e198b53b34c923be5913d5c98fbc0e2d15515ef9157ef2fdff1e52
+    sha256: 996d4491246892276f7991cc1bb5de4c708c4b77ca1e19ae68f74effea0b0860
 
 build:
   number: {{ build }}
