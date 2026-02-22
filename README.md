@@ -3,7 +3,7 @@ About neuron-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/neuron-feedstock/blob/main/LICENSE.txt)
 
-Home: https://neuron.yale.edu
+Home: https://neuron.yale.edu/
 
 Package license: BSD-3-Clause
 
