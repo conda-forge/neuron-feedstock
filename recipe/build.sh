@@ -29,6 +29,8 @@ fi
 # add -DIV_ENABLE_X11_DYNAMIC=ON to allow x dependencies to be optional?
 # not sure there's a benefit to that, since x can just be a lightweight dependency
 
+prefix_slash="${PREFIX}/"
+
 CMAKE_CONFIG="$CMAKE_CONFIG \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
   -DNRN_ENABLE_SHARED=ON \
@@ -36,10 +38,11 @@ CMAKE_CONFIG="$CMAKE_CONFIG \
   -DIV_ENABLE_SHARED=ON \
   -DNRN_ENABLE_PYTHON=ON \
   -DNRN_ENABLE_PYTHON_DYNAMIC=ON \
-  -DLINK_AGAINST_PYTHON=OFF \
   -DNRN_MODULE_INSTALL_OPTIONS= \
   -DCMAKE_C_COMPILER=$CC \
   -DCMAKE_CXX_COMPILER=$CXX \
+  -DNRN_INSTALL_PYTHON_PREFIX=${SP_DIR:${#prefix_slash}}/neuron \
+  -DPython_FIND_STRATEGY=VERSION \
 "
 
 if [[ ! -z "$mpi" && "$mpi" != "nompi" ]]; then
@@ -52,10 +55,6 @@ mkdir build
 cd build
 cmake $CMAKE_CONFIG ..
 cmake --build . --parallel ${CPU_COUNT:-1} --target install
-
-# relocate python install from lib/python to site-packages
-mv -v $PREFIX/lib/python/neuron $SP_DIR/neuron
-rm -rvf $PREFIX/lib/python
 
 $PYTHON -c 'import neuron.hoc'
 $PYTHON -c "import neuron; assert neuron.h.load_file(neuron.h.neuronhome() + '/lib/hoc/stdlib.hoc')"
