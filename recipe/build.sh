@@ -16,14 +16,15 @@ if [[ "$(uname)" == "Darwin" ]]; then
   export CXX=clang++
   # LDSHARED needed for Python (mac only, apparently)
   export LDSHARED="${LD:-$CXX} -bundle -undefined dynamic_lookup $LDFLAGS"
-  CMAKE_CONFIG="$CMAKE_CONFIG -DCURSES_NEED_NCURSES=ON"
+  CMAKE_CONFIG="$CMAKE_CONFIG \
+    -DCURSES_NEED_NCURSES=ON \
+    -DNRN_ENABLE_INTERVIEWS=OFF \
+  "
 else
   export CC=$(basename $CC)
   export CXX=$(basename $CXX)
-  # clear C++ compiler flags, which have been identified
-  # as the culprit
-  # export CPPFLAGS="-I$PREFIX/include"
-  # export CXXFLAGS="-fPIC -I$PREFIX/include"
+
+  CMAKE_CONFIG="$CMAKE_CONFIG -DNRN_ENABLE_INTERVIEWS=ON"
 fi
 
 # add -DIV_ENABLE_X11_DYNAMIC=ON to allow x dependencies to be optional?
@@ -32,7 +33,6 @@ fi
 CMAKE_CONFIG="$CMAKE_CONFIG \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
   -DNRN_ENABLE_SHARED=ON \
-  -DNRN_ENABLE_INTERVIEWS=ON \
   -DIV_ENABLE_SHARED=ON \
   -DNRN_ENABLE_PYTHON=ON \
   -DNRN_ENABLE_PYTHON_DYNAMIC=ON \
@@ -50,8 +50,8 @@ fi
 
 mkdir build
 cd build
-cmake $CMAKE_CONFIG ..
-cmake --build . --parallel ${CPU_COUNT:-1} --target install
+cmake $CMAKE_ARGS $CMAKE_CONFIG ..
+cmake --build . --parallel ${CPU_COUNT:-1} --target install --verbose
 
 # relocate python install from lib/python to site-packages
 mv -v $PREFIX/lib/python/neuron $SP_DIR/neuron

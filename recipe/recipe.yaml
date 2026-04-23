@@ -1,0 +1,103 @@
+schema_version: 1
+
+context:
+  version: 8.2.6
+  build: 0
+  mpi_prefix: ${{ 'mpi_' + mpi }}
+
+package:
+  name: neuron
+  version: ${{ version }}
+
+source:
+  - url: https://github.com/neuronsimulator/nrn/releases/download/${{ version }}/nrn-full-src-package-${{ version }}.tar.gz
+    sha256: eba1b379ae272aa2196263f6c5795f58e5dbf62c0899e82b0bb7c33dfb9c6afe
+
+build:
+  # add build string so packages can depend on
+  # mpi or nompi variants explicitly:
+  # `pkg * mpi_mpich_*` for mpich
+  # `pkg * mpi_*` for any mpi
+  # `pkg * nompi_*` for no mpi
+  number: ${{ build }}
+  string: ${{ mpi_prefix }}_h${{ hash }}_${{ build }}
+  skip: win
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - ${{ compiler('cxx') }}
+    - ${{ stdlib('c') }}
+    - make
+    - cmake <4
+    - bison
+    - flex
+    - pkg-config
+    - libtool
+  host:
+    - python
+    - cython <3.0
+    - setuptools
+    - pip
+    # setup_requires
+    - setuptools_scm
+    - wheel
+    - numpy <2
+    - readline
+    - ncurses
+    - if: linux
+      then:
+        - xorg-libx11
+        - xorg-libxcomposite
+        - xorg-libxext
+        - xorg-xorgproto
+    - if: mpi != "nompi"
+      then: ${{ mpi }}
+  run:
+    - python
+    - numpy <2
+    - packaging
+    - readline
+    - ncurses
+    - setuptools
+    - ${{ pin_compatible('xorg-libx11') }}
+    - ${{ pin_compatible('xorg-libxcomposite') }}
+    - ${{ pin_compatible('xorg-libxext') }}
+    - if: mpi != "nompi"
+      then:
+        - ${{ mpi }}
+        - ${{ compiler('c') }}
+        - ${{ stdlib('c') }}
+        - ${{ compiler('cxx') }}
+  run_exports:
+    - ${{ pin_subpackage("neuron") }}
+    - neuron * ${{ mpi_prefix }}_*
+
+tests:
+  - python:
+      imports:
+        - neuron
+        - neuron.rxd
+  - files:
+      recipe:
+        - pump.mod
+        - test_mpi.py
+        - run_test.sh
+    requirements:
+      run:
+        - ${{ compiler('c') }}
+        - ${{ compiler('cxx') }}
+        - make
+        - scipy
+    script:
+      - bash run_test.sh
+
+about:
+  license: BSD-3-Clause
+  license_file: Copyright
+  summary: NEURON is a simulator for models of neurons and networks of neuron.
+  homepage: https://neuron.yale.edu
+
+extra:
+  recipe-maintainers:
+    - minrk
