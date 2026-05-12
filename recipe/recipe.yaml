@@ -10,8 +10,11 @@ package:
   version: ${{ version }}
 
 source:
-  - url: https://github.com/neuronsimulator/nrn/releases/download/${{ version }}/nrn-full-src-package-${{ version }}.tar.gz
-    sha256: 4bc548655c63c39913ccdc9ff5bdbcdeb040ceb147a5941ae259f42ff06df1b8
+  url: https://github.com/neuronsimulator/nrn/releases/download/${{ version }}/nrn-full-src-package-${{ version }}.tar.gz
+  sha256: 4bc548655c63c39913ccdc9ff5bdbcdeb040ceb147a5941ae259f42ff06df1b8
+  patches:
+    # patch cython compiler error
+    - d0d1.patch
 
 build:
   # add build string so packages can depend on
@@ -36,7 +39,7 @@ requirements:
     - libtool
   host:
     - python
-    - cython <3.0
+    - cython
     - setuptools
     - pip
     # setup_requires
@@ -55,7 +58,7 @@ requirements:
       then: ${{ mpi }}
   run:
     - python
-    - numpy <2
+    - numpy
     - packaging
     - readline
     - ncurses
