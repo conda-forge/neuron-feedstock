@@ -21,7 +21,8 @@ build:
   # `pkg * nompi_*` for no mpi
   number: ${{ build }}
   string: ${{ mpi_prefix }}_h${{ hash }}_${{ build }}
-  skip: win
+  # python 3.13 needs numpy 2, which doesn't work yet
+  skip: win or match(python, ">=3.13")
 
 requirements:
   build:
