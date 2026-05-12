@@ -25,6 +25,18 @@ build:
   number: ${{ build }}
   string: ${{ mpi_prefix }}_h${{ hash }}_${{ build }}
   skip: win
+  files:
+    exclude:
+      # exclude bundled dependencies
+      # (these should be dependencies, not bundled at all)
+      - include/Eigen/
+      - include/Random123/
+      - include/fmt/
+      - lib/libfmt*
+      - lib/cmake/fmt/
+      - lib/pkgconfig/fmt*
+      # neuron extras
+      - share/nrn/demo/
 
 requirements:
   build:
