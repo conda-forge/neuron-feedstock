@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: 8.2.6
+  version: 9.0.1
   build: 0
   mpi_prefix: ${{ 'mpi_' + mpi }}
 
@@ -11,7 +11,7 @@ package:
 
 source:
   - url: https://github.com/neuronsimulator/nrn/releases/download/${{ version }}/nrn-full-src-package-${{ version }}.tar.gz
-    sha256: eba1b379ae272aa2196263f6c5795f58e5dbf62c0899e82b0bb7c33dfb9c6afe
+    sha256: 4bc548655c63c39913ccdc9ff5bdbcdeb040ceb147a5941ae259f42ff06df1b8
 
 build:
   # add build string so packages can depend on
