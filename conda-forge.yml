@@ -5,3 +5,7 @@ github:
 conda_build:
   pkg_format: '2'
 conda_build_tool: rattler-build
+build_platform:
+  osx_arm64: osx_arm64
+provider:
+  osx_arm64: default
