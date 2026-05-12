@@ -60,9 +60,6 @@ requirements:
     - readline
     - ncurses
     - setuptools
-    - ${{ pin_compatible('xorg-libx11') }}
-    - ${{ pin_compatible('xorg-libxcomposite') }}
-    - ${{ pin_compatible('xorg-libxext') }}
     - if: mpi != "nompi"
       then:
         - ${{ mpi }}
