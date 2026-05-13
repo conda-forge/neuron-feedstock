@@ -36,7 +36,7 @@ test -d .git && mv .git dotgit
 # except the ones we expect
 for ext in external/*; do
   case "$ext" in
-    external/Random123 | external/coding-conventions)
+    external/iv | external/Random123 | external/coding-conventions)
       ;;
     *)
       rm -r "$ext"
