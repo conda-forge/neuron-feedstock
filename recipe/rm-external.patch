@@ -1,0 +1,58 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 80132bd..5311bf1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -315,6 +315,11 @@ if(NOT EXISTS "${CODING_CONV_CMAKE}/3rdparty.cmake")
+ endif()
+ include("${CODING_CONV_CMAKE}/3rdparty.cmake")
+ cpp_cc_git_submodule(Random123)
++find_package(Eigen3 REQUIRED)
++get_target_property(EIGEN_INCLUDE Eigen3::Eigen INTERFACE_INCLUDE_DIRECTORIES)
++include_directories(AFTER ${EIGEN_INCLUDE})
++find_package(fmt REQUIRED)
++if(FALSE)  # disable bundled eigen, fmt
+ cpp_cc_git_submodule(eigen)
+ nrn_add_external_project(fmt)
+ set_property(TARGET fmt PROPERTY POSITION_INDEPENDENT_CODE ON)
+@@ -328,6 +333,7 @@ file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/external/Random123/include/Random123"
+      DESTINATION "${CMAKE_BINARY_DIR}/include/")
+ file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/external/eigen/Eigen"
+      DESTINATION "${CMAKE_BINARY_DIR}/include/")
++endif()
+ 
+ # =================================================================================================
+ # Enable sanitizer support if the NRN_SANITIZERS variable is set. Comes befores PythonHelper.cmake.
+@@ -524,7 +530,9 @@ if(NRN_ENABLE_PYTHON)
+   # Make sure the USE_PYTHON macro is defined in the C++ code
+   list(APPEND NRN_COMPILE_DEFS USE_PYTHON)
+   # Ensure nanobind is there, but dont import, we don't want its CMake
++  if(FALSE)
+   nrn_add_external_project(nanobind DISABLE_ADD RECURSIVE SHALLOW)
++  endif()
+   include(NanoBindMinimal)
+ endif()
+ 
+@@ -583,7 +591,10 @@ if(NOT NRN_ENABLE_MPI_DYNAMIC OR ${num_mpi} EQUAL 1)
+ endif()
+ 
+ # initialize CLI11 submodule
++if(FALSE)
+ cpp_cc_git_submodule(CLI11 BUILD PACKAGE CLI11 REQUIRED)
++endif()
++find_package(CLI11 REQUIRED)
+ 
+ # =============================================================================
+ # Enable NMODL code-generator support
+diff --git a/cmake/NanoBindMinimal.cmake b/cmake/NanoBindMinimal.cmake
+index 67ba2f1..7c6ee2b 100644
+--- a/cmake/NanoBindMinimal.cmake
++++ b/cmake/NanoBindMinimal.cmake
+@@ -2,7 +2,7 @@
+ # minimal nanobind interface
+ # =============================================================================
+ 
+-set(NB_DIR ${PROJECT_SOURCE_DIR}/external/nanobind)
++option(NB_DIR ${PROJECT_SOURCE_DIR}/external/nanobind)
+ 
+ function(make_nanobind_target TARGET_NAME PYINC)
+   add_library(${TARGET_NAME} STATIC ${NB_DIR}/src/nb_combined.cpp)

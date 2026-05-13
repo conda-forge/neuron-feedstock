@@ -31,8 +31,18 @@ fi
 # not sure there's a benefit to that, since x can just be a lightweight dependency
 
 # remove .git directory from sdist, which fails to load package version
-# and .gitmodules
-rm -rvf .git*
+test -d .git && mv .git dotgit
+# make sure external packages aren't used,
+# except the ones we expect
+for ext in external/*; do
+  case "$ext" in
+    external/Random123 | external/coding-conventions)
+      ;;
+    *)
+      rm -r "$ext"
+      ;;
+  esac
+done
 
 # default CMAKE_FIND_ROOT_PATH breaks find_path
 CMAKE_CONFIG="$CMAKE_CONFIG \
@@ -42,10 +52,10 @@ CMAKE_CONFIG="$CMAKE_CONFIG \
   -DIV_ENABLE_SHARED=ON \
   -DNRN_ENABLE_PYTHON=ON \
   -DNRN_ENABLE_PYTHON_DYNAMIC=ON \
-  -DLINK_AGAINST_PYTHON=OFF \
   -DNRN_MODULE_INSTALL_OPTIONS= \
   -DCMAKE_C_COMPILER=$CC \
   -DCMAKE_CXX_COMPILER=$CXX \
+  -DNB_DIR=$SP_DIR/nanobind
 "
 
 if [[ ! -z "$mpi" && "$mpi" != "nompi" ]]; then
@@ -54,6 +64,7 @@ else
   CMAKE_CONFIG="-DNRN_ENABLE_MPI=OFF $CMAKE_CONFIG"
 fi
 
+rm -rf build
 mkdir build
 cd build
 cmake $CMAKE_ARGS $CMAKE_CONFIG ..

@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   version: 9.0.1
-  build: 2
+  build: 3
   mpi_prefix: ${{ 'mpi_' + mpi if mpi != 'nompi' else 'nompi_' }}
 
 package:
@@ -17,6 +17,8 @@ source:
     - d0d1.patch
     # patch project version to remove .dev0 from releases
     - project-version.patch
+    # unbundle external dependencies
+    - rm-external.patch
 
 build:
   # add build string so packages can depend on
@@ -52,13 +54,18 @@ requirements:
     - pkg-config
     - libtool
   host:
+    # external dependencies
+    - eigen
+    - fmt
+    - cli11
+    - nanobind
+    # build dependencies
     - python
     - cython
     - setuptools
     - pip
     # setup_requires
     - setuptools_scm
-    - wheel
     - numpy
     - readline
     - ncurses
