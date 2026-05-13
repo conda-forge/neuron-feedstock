@@ -31,16 +31,9 @@ build:
   skip: win
   files:
     exclude:
-      # exclude bundled dependencies
-      # (these should be dependencies, not bundled at all)
-      - include/Eigen/
-      - include/Random123/
-      - include/fmt/
-      - lib/libfmt*
-      - lib/cmake/fmt/
-      - lib/pkgconfig/fmt*
       # neuron extras
       - share/nrn/demo/
+      - "*.app/"
 
 requirements:
   build:
@@ -95,6 +88,22 @@ requirements:
     - neuron * ${{ mpi_prefix }}_*
 
 tests:
+  - package_contents:
+      bin:
+        - nrnivmodl
+      include:
+        exists:
+          - neuron.h
+        not_exists:
+          - Random123/
+          - Eigen/
+          - fmt/
+      lib:
+        exists:
+          - libnrniv
+          - librxdmath
+        not_exists:
+          - libfmt
   - python:
       imports:
         - neuron
