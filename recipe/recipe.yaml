@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   version: 9.0.1
-  build: 1
+  build: 2
   mpi_prefix: ${{ 'mpi_' + mpi if mpi != 'nompi' else 'nompi_' }}
 
 package:
