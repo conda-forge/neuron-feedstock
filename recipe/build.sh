@@ -31,8 +31,8 @@ fi
 # not sure there's a benefit to that, since x can just be a lightweight dependency
 
 # remove .git directory from sdist, which fails to load package version
-rm -rf .git
-rm -vf .git*
+# and .gitmodules
+rm -rvf .git*
 
 CMAKE_CONFIG="$CMAKE_CONFIG \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
