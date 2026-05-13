@@ -12,6 +12,8 @@ nrnivmodl
 
 conda env export -p $CONDA_PREFIX
 
+python -c "import os, neuron; assert neuron.version == os.environ['PKG_VERSION'], neuron.version"
+
 python -c "import neuron; neuron.test()"
 python -c "import neuron; assert neuron.h.load_file(neuron.h.neuronhome() + '/lib/hoc/stdlib.hoc')"
 python -c "import neuron; assert neuron.h.load_file('stdlib.hoc')"

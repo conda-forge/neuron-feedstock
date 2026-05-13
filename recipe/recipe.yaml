@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   version: 9.0.1
-  build: 1
+  build: 2
   mpi_prefix: ${{ 'mpi_' + mpi if mpi != 'nompi' else 'nompi_' }}
 
 package:
@@ -15,6 +15,8 @@ source:
   patches:
     # patch cython compiler error
     - d0d1.patch
+    # patch project version to remove .dev0 from releases
+    - project-version.patch
 
 build:
   # add build string so packages can depend on
