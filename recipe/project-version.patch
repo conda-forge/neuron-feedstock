@@ -1,0 +1,13 @@
+diff --git a/cmake/MacroHelper.cmake b/cmake/MacroHelper.cmake
+index 5353242..bb4f1be 100644
+--- a/cmake/MacroHelper.cmake
++++ b/cmake/MacroHelper.cmake
+@@ -296,7 +296,7 @@ function(add_cpp_git_information target scope)
+     set(GIT_DATE "Build Time: ${BUILD_TIME}")
+     set(GIT_BRANCH "unknown branch")
+     set(GIT_CHANGESET "unknown commit id")
+-    set(GIT_DESCRIBE "${PROJECT_VERSION}.dev0")
++    set(GIT_DESCRIBE "${PROJECT_VERSION}")
+     set(GIT_DESCRIBE_FULL "${GIT_DESCRIBE}")
+   endif()
+ 

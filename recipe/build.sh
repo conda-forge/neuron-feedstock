@@ -30,8 +30,14 @@ fi
 # add -DIV_ENABLE_X11_DYNAMIC=ON to allow x dependencies to be optional?
 # not sure there's a benefit to that, since x can just be a lightweight dependency
 
+# remove .git directory from sdist, which fails to load package version
+# and .gitmodules
+rm -rvf .git*
+
+# default CMAKE_FIND_ROOT_PATH breaks find_path
 CMAKE_CONFIG="$CMAKE_CONFIG \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
+  -DCMAKE_FIND_ROOT_PATH= \
   -DNRN_ENABLE_SHARED=ON \
   -DIV_ENABLE_SHARED=ON \
   -DNRN_ENABLE_PYTHON=ON \
