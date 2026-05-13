@@ -32,6 +32,7 @@ fi
 
 # remove .git directory from sdist, which fails to load package version
 rm -rf .git
+rm -vf .git*
 
 CMAKE_CONFIG="$CMAKE_CONFIG \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
