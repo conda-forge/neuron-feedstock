@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: 8.2.6
+  version: 9.0.1
   build: 0
   mpi_prefix: ${{ 'mpi_' + mpi }}
 
@@ -10,8 +10,11 @@ package:
   version: ${{ version }}
 
 source:
-  - url: https://github.com/neuronsimulator/nrn/releases/download/${{ version }}/nrn-full-src-package-${{ version }}.tar.gz
-    sha256: eba1b379ae272aa2196263f6c5795f58e5dbf62c0899e82b0bb7c33dfb9c6afe
+  url: https://github.com/neuronsimulator/nrn/releases/download/${{ version }}/nrn-full-src-package-${{ version }}.tar.gz
+  sha256: 4bc548655c63c39913ccdc9ff5bdbcdeb040ceb147a5941ae259f42ff06df1b8
+  patches:
+    # patch cython compiler error
+    - d0d1.patch
 
 build:
   # add build string so packages can depend on
@@ -21,8 +24,19 @@ build:
   # `pkg * nompi_*` for no mpi
   number: ${{ build }}
   string: ${{ mpi_prefix }}_h${{ hash }}_${{ build }}
-  # python 3.13 needs numpy 2, which doesn't work yet
-  skip: win or match(python, ">=3.13")
+  skip: win
+  files:
+    exclude:
+      # exclude bundled dependencies
+      # (these should be dependencies, not bundled at all)
+      - include/Eigen/
+      - include/Random123/
+      - include/fmt/
+      - lib/libfmt*
+      - lib/cmake/fmt/
+      - lib/pkgconfig/fmt*
+      # neuron extras
+      - share/nrn/demo/
 
 requirements:
   build:
@@ -37,13 +51,13 @@ requirements:
     - libtool
   host:
     - python
-    - cython <3.0
+    - cython
     - setuptools
     - pip
     # setup_requires
     - setuptools_scm
     - wheel
-    - numpy <2
+    - numpy
     - readline
     - ncurses
     - if: linux
@@ -56,7 +70,7 @@ requirements:
       then: ${{ mpi }}
   run:
     - python
-    - numpy <2
+    - numpy
     - packaging
     - readline
     - ncurses

@@ -1,0 +1,14 @@
+diff --git a/share/lib/python/neuron/rxd/geometry3d/ctng.pyx b/share/lib/python/neuron/rxd/geometry3d/ctng.pyx
+index 42794d54a..93f6f2514 100644
+--- a/share/lib/python/neuron/rxd/geometry3d/ctng.pyx
++++ b/share/lib/python/neuron/rxd/geometry3d/ctng.pyx
+@@ -456,7 +456,8 @@ def constructive_neuronal_geometry(source, int n_soma_step, double dx, nouniform
+ 
+ 
+             for i in range(len(x) - 1):
+-                d0, d1 = d[i : i + 2]
++                d0 = d[i]
++                d1 = d[i+1]
+                 if (x[i] != x[i + 1] or y[i] != y[i + 1] or z[i] != z[i + 1]):
+                     # short section check
+                     #if linalg.norm((x[i + 1] - x[i], y[i + 1] - y[i], z[i + 1] - z[i])) < (d1 + d0) * 0.5:
